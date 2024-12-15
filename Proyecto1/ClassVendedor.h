@@ -10,13 +10,17 @@ char nombre[35];
 int dni;
 char telefono[15];
 char correo[35];
+int id;
+char clave[20];
 
 public:
-Vendedor(const char* n="XXX",int d=0,const char* t="1100000000",const char* c="vendedor@gmail.com"){
+Vendedor(const char* n="XXX",int d=0,const char* t="1100000000",const char* c="vendedor@gmail.com",int i=0, const char* cv="12345678"){
 strcpy(this->nombre, n);
 this->dni = d;
 strcpy(this->telefono, t);
 strcpy(this->correo, c);
+this->id=i;
+strcpy(this->clave,cv);
 }
 
 void setNombre(const char* n){
@@ -35,6 +39,14 @@ void setCorreo(const char* c){
 strcpy(this->correo,c);
 }
 
+void setId(int i){
+this->id=i;
+}
+
+void setClave(const char* cv){
+strcpy(this->clave,cv);
+}
+
 const char* getNombre(char n[35]){
 return nombre;
 }
@@ -45,6 +57,14 @@ return dni;
 
 const char* getTelefono(char t[35]){
 return telefono;
+}
+
+int getId(int i){
+return id;
+}
+
+const char* getClave(char cv[20]){
+return clave;
 }
 
 };
