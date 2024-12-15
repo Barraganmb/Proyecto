@@ -1,5 +1,7 @@
 #ifndef CLASSCLIENTE_H_INCLUDED
 #define CLASSCLIENTE_H_INCLUDED
+#include <iostream>
+#include <cstring>
 
 class Cliente{
 
@@ -28,7 +30,7 @@ dniCliente=d;
 }
 
 void setTelefono(const char* t){
-strcpy(this->telefono,t);
+strcpy(this->telefonoCliente,t);
 }
 
 void setCorreoCliente(const char* c){
