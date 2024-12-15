@@ -1,9 +1,25 @@
 # depslib dependency file v1.0
-1734290459 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\main.cpp
+1734300555 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\main.cpp
 	<iostream>
 	"ClassVendedor.h"
+	"ArchivoVendedor.h"
+	"ArchivoCliente.h"
 
-1734295540 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classvendedor.h
+1734299763 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classvendedor.h
+	<iostream>
+	<cstring>
+
+1734300506 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivovendedor.h
+	"ClassVendedor.h"
+	<cstdio>
+	<cstring>
+
+1734300645 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivocliente.h
+	"ClassCliente.h"
+	<cstdio>
+	<cstring>
+
+1734300621 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classcliente.h
 	<iostream>
 	<cstring>
 

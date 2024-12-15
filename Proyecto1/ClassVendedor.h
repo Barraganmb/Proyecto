@@ -47,24 +47,28 @@ void setClave(const char* cv){
 strcpy(this->clave,cv);
 }
 
-const char* getNombre(char n[35]){
+const char* getNombre(){
 return nombre;
 }
 
-int getDni(int d){
+int getDni(){
 return dni;
 }
 
-const char* getTelefono(char t[35]){
+const char* getTelefono(){
 return telefono;
 }
 
-int getId(int i){
+int getId(){
 return id;
 }
 
-const char* getClave(char cv[20]){
+const char* getClave(){
 return clave;
+}
+
+const char* getCorreo(){
+return correo;
 }
 
 };
