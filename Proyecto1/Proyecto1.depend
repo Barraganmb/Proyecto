@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1734290459 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\main.cpp
+	<iostream>
+	"ClassVendedor.h"
+
+1734291067 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classvendedor.h
+	<iostream>
+	<cstring>
+
