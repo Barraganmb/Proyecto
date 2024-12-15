@@ -41,16 +41,20 @@ void setIdCliente(int i){
 this->idCliente=i;
 }
 
-const char* getNombreCliente(char n[35]){
+const char* getNombreCliente(){
 return nombreCliente;
 }
 
-int getDniCliente(int d){
+int getDniCliente(){
 return dniCliente;
 }
 
-const char* getTelefonoCliente(char t[35]){
+const char* getTelefonoCliente(){
 return telefonoCliente;
+}
+
+const char* getCorreoCliente(){
+return correoCliente;
 }
 
 int getIdCliente(int i){
