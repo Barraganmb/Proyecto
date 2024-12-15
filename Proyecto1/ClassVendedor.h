@@ -35,6 +35,18 @@ void setCorreo(const char* c){
 strcpy(this->correo,c);
 }
 
+const char* getNombre(char n[35]){
+return nombre;
+}
+
+int getDni(int d){
+return dni;
+}
+
+const char* getTelefono(char t[35]){
+return telefono;
+}
+
 };
 
 #endif // CLASSVENDEDOR_H_INCLUDED
