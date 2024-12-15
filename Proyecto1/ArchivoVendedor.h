@@ -96,6 +96,7 @@ cout<<"Nombre: "<<obj.getNombre()<<endl;
 cout<<"D.N.I: "<<obj.getDni()<<endl;
 cout<<"Telefono; "<<obj.getTelefono()<<endl;
 cout<<"Correo: "<<obj.getCorreo()<<endl;
+fclose(listar);
 }
 
 }

@@ -8,6 +8,7 @@ using namespace std;
 class ArchivoCliente{
 public:
 void darAltaCliente();
+void listarClientes();
 
 };
 
@@ -47,6 +48,23 @@ obj.setCorreoCliente(correo);
 
 fwrite(&obj,sizeof(Cliente),1,altaCliente);
 fclose(altaCliente);
+}
+
+void ArchivoCliente::listarClientes(){
+FILE* listar;
+listar=fopen("cliente.dat","rb");
+if(listar==NULL){
+cout<<"NO se logro abrir este archivo"<<endl;
+return;
+}
+Cliente obj;
+while(fread(&obj,sizeof(Cliente),1,listar)!=0){
+cout<<"Nombre: "<<obj.getNombreCliente()<<endl;
+cout<<"D.N.I: "<<obj.getDniCliente()<<endl;
+cout<<"Telefono: "<<obj.getTelefonoCliente()<<endl;
+cout<<"Correo: "<<obj.getCorreoCliente()<<endl;
+fclose(listar);
+}
 }
 
 #endif // ARCHIVOCLIENTE_H_INCLUDED
