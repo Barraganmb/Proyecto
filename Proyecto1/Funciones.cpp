@@ -3,6 +3,7 @@
 #include "ArchivoVendedor.h"
 #include "ArchivoCliente.h"
 #include "DeclaracionDeFunciones.h"
+
 using namespace std;
 
 void menu(){
