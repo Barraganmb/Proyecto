@@ -1,10 +1,9 @@
 #include <iostream>
-#include "ClassVendedor.h"
-#include "ArchivoVendedor.h"
-#include "ArchivoCliente.h"
+#include "DeclaracionDeFunciones.h"
 using namespace std;
 
 int main()
 {
+menu();
     return 0;
 }
