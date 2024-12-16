@@ -4,7 +4,7 @@
 class ArchivoAuto{
 public:
 void darAltaAuto();
-
+void listarAutos();
 };
 
 void ArchivoAuto::darAltaAuto(){
@@ -20,6 +20,7 @@ char modelo[30];
 char marca[30];
 float precio;
 int id;
+bool estado=false;
 cout<<"Nombre: ";
 cin.ignore();
 cin.getline(nombre,30, '\n');
@@ -39,8 +40,33 @@ cout<<"Precio: ";
 cin>>precio;
 obj.setPrecio(precio);
 
+estado=true;
+obj.setEstadoA(estado);
+
 fwrite(&obj,sizeof(Auto),1,altaAuto);
 fclose(altaAuto);
+
+}
+
+void ArchivoAuto::listarAutos(){
+FILE* listarA;
+listarA=fopen("autos.dat","rb");
+if(listarA==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Auto objA;
+
+while(fread(&objA,sizeof(Auto),1,listarA)!=0){
+if(objA.getEstado()==true){
+cout<<"Nombre: "<<objA.getNombre()<<endl;
+cout<<"Marca: "<<objA.getMarca()<<endl;
+cout<<"Modelo: "<<objA.getModelo()<<endl;
+cout<<"Precio: "<<objA.getPrecio()<<endl;
+cout<<"Id: "<<objA.getIdAuto()<<endl;
+fclose(listarA);
+}
+}
 
 }
 

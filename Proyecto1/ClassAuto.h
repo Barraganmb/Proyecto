@@ -8,14 +8,16 @@ char marcaAuto[30];
 char modeloAuto[30];
 float precioAuto;
 int idAuto;
+bool estadoAuto;
 
 public:
-Auto(const char* nA="XXX",const char* mA="XXX",const char* modelo="XXX",float pA=0.0,int iA=0){
+Auto(const char* nA="XXX",const char* mA="XXX",const char* modelo="XXX",float pA=0.0,int iA=0,bool e=false){
 strcpy(this->nombreAuto,nA);
 strcpy(this->marcaAuto,mA);
 strcpy(this->modeloAuto,modelo);
 this->precioAuto=pA;
 this->idAuto=iA;
+this->estadoAuto=e;
 }
 
 void setNombre(const char* n){
@@ -38,6 +40,10 @@ void setId(int i){
 this->idAuto=i;
 }
 
+void setEstadoA(bool e){
+this->estadoAuto=e;
+}
+
 const char* getNombre(){
 return nombreAuto;
 }
@@ -56,6 +62,10 @@ return precioAuto;
 
 int getIdAuto(){
 return idAuto;
+}
+
+bool getEstado(){
+return estadoAuto;
 }
 
 };

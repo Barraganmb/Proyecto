@@ -7,44 +7,45 @@
 
 using namespace std;
 
+
+//MENUS
 void menu(){
 int opcion;
-ArchivoVendedor objV;
-ArchivoCliente objC;
-ArchivoAuto objA;
+ArchivoVendedor obj;
 while(true){
 
-cout<<"1)Alta vendedor"<<endl;
-cout<<"2)Alta cliente"<<endl;
-cout<<"3)Listar vendedores"<<endl;
-cout<<"4)Listar clientes"<<endl;
+cout<<"1)Iniciar secion"<<endl;
+cout<<"2)Olvide mi clave"<<endl;
+cout<<"3)Dar alta a un vendedor"<<endl;
+cout<<"4)"<<endl;
+cout<<"0)Salir"<<endl;
 cin>>opcion;
 
 switch(opcion){
 
 case 1:
     system("cls");
-    objV.darAlta();
+    obj.iniciarSecion();
     break;
 
 case 2:
     system("cls");
-    objC.darAltaCliente();
+
     break;
 
 case 3:
     system("cls");
-    objV.listarVendedores();
+
     break;
 
 case 4:
     system("cls");
-    objC.listarClientes();
+
     break;
 
 case 5:
     system("cls");
-    objA.darAltaAuto();
+
     break;
 
 case 0:
@@ -56,3 +57,10 @@ case 0:
 
 
 }
+
+
+void menuVendedores(){
+cout<<"hola";
+}
+
+//FUNCIONES PARA LOS MENUS
