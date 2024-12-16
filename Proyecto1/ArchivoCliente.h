@@ -63,6 +63,7 @@ cout<<"Nombre: "<<obj.getNombreCliente()<<endl;
 cout<<"D.N.I: "<<obj.getDniCliente()<<endl;
 cout<<"Telefono: "<<obj.getTelefonoCliente()<<endl;
 cout<<"Correo: "<<obj.getCorreoCliente()<<endl;
+cout<<"Id: "<<obj.getIdCliente()<<endl;
 fclose(listar);
 }
 }

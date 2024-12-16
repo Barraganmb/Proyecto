@@ -1,7 +1,6 @@
 #ifndef ARCHIVOVENDEDOR_H_INCLUDED
 #define ARCHIVOVENDEDOR_H_INCLUDED
 #include "ClassVendedor.h"
-
 #include <cstdio>
 #include <cstring>
 using namespace std;
@@ -12,6 +11,7 @@ public:
 void darAlta();
 void buscarId(int idV);
 void listarVendedores();
+void iniciarSecion();
 
 };
 
@@ -53,6 +53,7 @@ int dni, id;
 char telefono[15];
 char correo[35];
 char clave[20];
+bool estado=false;
 
 cout<<"Nombre completo: ";
 cin.ignore();
@@ -78,6 +79,9 @@ cin.ignore();
 cin.getline(clave,20,'\n');
 obj.setClave(clave);
 
+estado=true;
+obj.setEstado(estado);
+
 fwrite(&obj,sizeof(Vendedor),1,alta);
 fclose(alta);
 
@@ -92,12 +96,47 @@ return;
 }
 Vendedor obj;
 while(fread(&obj,sizeof(Vendedor),1,listar)!=0){
+if(obj.getEstadoVendedor()==true){
 cout<<"Nombre: "<<obj.getNombre()<<endl;
 cout<<"D.N.I: "<<obj.getDni()<<endl;
 cout<<"Telefono; "<<obj.getTelefono()<<endl;
 cout<<"Correo: "<<obj.getCorreo()<<endl;
+cout<<"Id: "<<obj.getId()<<endl;
 fclose(listar);
+}
+}
+}
+
+
+void ArchivoVendedor::iniciarSecion(){
+FILE* iniciar;
+iniciar=fopen("vendedor.dat","rb");
+if(iniciar==NULL){
+cout<<"NO se logro abrir este archivo"<<endl;
+return;
+}
+Vendedor obj;
+char correo[35];
+char clave[20];
+
+cout<<"Ingrese su correo: ";
+cin.ignore();
+cin.getline(correo,35,'\n');
+
+cout<<"Ingrese su clave: ";
+cin.ignore();
+cin.getline(clave,20,'\n');
+
+while(fread(&obj,sizeof (Vendedor),1,iniciar)!=0){
+if(obj.getCorreo()==correo&&obj.getClave()==clave){
+cout<<"inicio exitoso"<<endl;
+fclose(iniciar);
+}
+else{
+cout<<"No se encontraron los datos"<<endl;
+}
 }
 
 }
+
 #endif // ARCHIVOVENDEDOR_H_INCLUDED

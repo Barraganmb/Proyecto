@@ -2,5 +2,5 @@
 #define DECLARACIONDEFUNCIONES_H_INCLUDED
 
 void menu();
-
+void menuVendedores();
 #endif // DECLARACIONDEFUNCIONES_H_INCLUDED
