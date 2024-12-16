@@ -3,6 +3,7 @@
 #include "ArchivoVendedor.h"
 #include "ArchivoCliente.h"
 #include "DeclaracionDeFunciones.h"
+#include "ArchivoAutos.h"
 
 using namespace std;
 
@@ -10,6 +11,7 @@ void menu(){
 int opcion;
 ArchivoVendedor objV;
 ArchivoCliente objC;
+ArchivoAuto objA;
 while(true){
 
 cout<<"1)Alta vendedor"<<endl;
@@ -38,6 +40,11 @@ case 3:
 case 4:
     system("cls");
     objC.listarClientes();
+    break;
+
+case 5:
+    system("cls");
+    objA.darAltaAuto();
     break;
 
 case 0:
