@@ -12,6 +12,7 @@ using namespace std;
 void menu(){
 int opcion;
 ArchivoVendedor obj;
+ArchivoCliente obj1;
 while(true){
 
 cout<<"1)Iniciar secion"<<endl;
@@ -30,12 +31,13 @@ case 1:
 
 case 2:
     system("cls");
+obj1.listarClientes();
 
     break;
 
 case 3:
     system("cls");
-
+obj1.darAltaCliente();
     break;
 
 case 4:

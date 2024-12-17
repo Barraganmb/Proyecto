@@ -5,6 +5,7 @@ class ArchivoAuto{
 public:
 void darAltaAuto();
 void listarAutos();
+int idAuto();
 };
 
 void ArchivoAuto::darAltaAuto(){
@@ -43,6 +44,10 @@ obj.setPrecio(precio);
 estado=true;
 obj.setEstadoA(estado);
 
+id=idAuto();
+cout<<"El id asignado es: "<<id<<endl;
+obj.setId(id);
+
 fwrite(&obj,sizeof(Auto),1,altaAuto);
 fclose(altaAuto);
 
@@ -70,4 +75,20 @@ fclose(listarA);
 
 }
 
+
+int ArchivoAuto::idAuto(){
+FILE* idA;
+idA=fopen("autos.dat","rb+");
+if(idA==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return 0;
+}
+int idAuto=0;
+Auto obj;
+while(fread(&obj,sizeof(Auto),1,idA)!=0){
+idAuto++;
+}
+fclose(idA);
+return idAuto+1;
+}
 #endif // ARCHIVOAUTOS_H_INCLUDED
