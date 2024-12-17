@@ -12,6 +12,7 @@ void darAlta();
 void buscarId(int idV);
 void listarVendedores();
 void iniciarSecion();
+int idUnico();
 
 };
 
@@ -82,6 +83,9 @@ obj.setClave(clave);
 estado=true;
 obj.setEstado(estado);
 
+id=idUnico();
+cout<<"Su id asignado es: "<<id<<endl;
+obj.setId(id);
 fwrite(&obj,sizeof(Vendedor),1,alta);
 fclose(alta);
 
@@ -102,8 +106,11 @@ cout<<"D.N.I: "<<obj.getDni()<<endl;
 cout<<"Telefono; "<<obj.getTelefono()<<endl;
 cout<<"Correo: "<<obj.getCorreo()<<endl;
 cout<<"Id: "<<obj.getId()<<endl;
-fclose(listar);
 }
+fclose(listar);
+cout<<endl;
+system("pause");
+system("cls");
 }
 }
 
@@ -139,4 +146,20 @@ cout<<"No se encontraron los datos"<<endl;
 
 }
 
+
+int ArchivoVendedor::idUnico(){
+FILE* idV;
+idV=fopen("vendedor.dat","rb+");
+if(idV==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return 0;
+}
+int idVendedor=0;
+Vendedor obj;
+while(fread(&obj,sizeof(Vendedor),1,idV)!=0){
+idVendedor++;
+}
+fclose(idV);
+return idVendedor+1;
+}
 #endif // ARCHIVOVENDEDOR_H_INCLUDED

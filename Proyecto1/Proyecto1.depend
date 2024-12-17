@@ -7,12 +7,12 @@
 	<iostream>
 	<cstring>
 
-1734371868 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivovendedor.h
+1734460010 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivovendedor.h
 	"ClassVendedor.h"
 	<cstdio>
 	<cstring>
 
-1734368442 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivocliente.h
+1734459551 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivocliente.h
 	"ClassCliente.h"
 	<cstdio>
 	<cstring>
@@ -23,7 +23,7 @@
 
 1734371597 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\declaraciondefunciones.h
 
-1734371713 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
+1734458601 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
 	<iostream>
 	"ClassVendedor.h"
 	"ArchivoVendedor.h"
@@ -31,7 +31,7 @@
 	"DeclaracionDeFunciones.h"
 	"ArchivoAutos.h"
 
-1734368442 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivoautos.h
+1734460010 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivoautos.h
 	"ClassAuto.h"
 
 1734367394 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classauto.h

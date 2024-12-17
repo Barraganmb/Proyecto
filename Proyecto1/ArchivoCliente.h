@@ -9,12 +9,13 @@ class ArchivoCliente{
 public:
 void darAltaCliente();
 void listarClientes();
+int idCliente();
 
 };
 
 void ArchivoCliente::darAltaCliente(){
-FILE* altaCliente;
-altaCliente=fopen("cliente.dat","ab");
+FILE *altaCliente;
+altaCliente=fopen("cliente.dat","ab+");
 if(altaCliente==NULL){
 cout<<"No se logro crea un nuevo archivo"<<endl;
 return;
@@ -46,6 +47,10 @@ cin.ignore();
 cin.getline(correo,35,'\n');
 obj.setCorreoCliente(correo);
 
+id=idCliente();
+cout<<"Id asignado: "<<id<<endl;
+obj.setIdCliente(id);
+
 fwrite(&obj,sizeof(Cliente),1,altaCliente);
 fclose(altaCliente);
 }
@@ -64,8 +69,27 @@ cout<<"D.N.I: "<<obj.getDniCliente()<<endl;
 cout<<"Telefono: "<<obj.getTelefonoCliente()<<endl;
 cout<<"Correo: "<<obj.getCorreoCliente()<<endl;
 cout<<"Id: "<<obj.getIdCliente()<<endl;
-fclose(listar);
 }
+fclose(listar);
+cout<<endl;
+system("pause");
+system("cls");
+}
+
+int ArchivoCliente::idCliente(){
+FILE* idC;
+idC=fopen("cliente.dat","rb+");
+if(idC==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return 0;
+}
+int idCliente=0;
+Cliente obj;
+while(fread(&obj,sizeof(Cliente),1,idC)!=0){
+idCliente++;
+}
+fclose(idC);
+return idCliente+1;
 }
 
 #endif // ARCHIVOCLIENTE_H_INCLUDED
