@@ -10,6 +10,7 @@ public:
 void darAltaCliente();
 void listarClientes();
 int idCliente();
+void buscarCliente(int idC);
 
 };
 
@@ -90,6 +91,32 @@ idCliente++;
 }
 fclose(idC);
 return idCliente+1;
+}
+
+void ArchivoCliente::buscarCliente(int idC){
+FILE* buscarCliente;
+buscarCliente=fopen("cliente.dar","rb");
+if(buscarCliente==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Cliente obj;
+bool encontrado=false;
+while(fread(&obj,sizeof(Cliente),1,buscarCliente)!=0){
+if(obj.getIdCliente()==idC){
+cout<<"Nombre: "<<obj.getNombreCliente()<<endl;
+cout<<"D.N.I: "<<obj.getDniCliente()<<endl;
+cout<<"Correo: "<<obj.getCorreoCliente()<<endl;
+cout<<"Telefono: "<<obj.getTelefonoCliente()<<endl;
+cout<<"Id: "<<obj.getIdCliente()<<endl;
+encontrado=true;
+}
+}
+if(!encontrado){
+cout<<"No se encontro el id ingresado"<<endl;
+return;
+}
+fclose(buscarCliente);
 }
 
 #endif // ARCHIVOCLIENTE_H_INCLUDED

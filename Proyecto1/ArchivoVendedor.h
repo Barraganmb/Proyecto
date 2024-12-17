@@ -9,36 +9,12 @@ class ArchivoVendedor{
 
 public:
 void darAlta();
-void buscarId(int idV);
 void listarVendedores();
 void iniciarSecion();
 int idUnico();
+void buscarVendedor(int idV);
 
 };
-
-void ArchivoVendedor::buscarId(int idV){
-FILE* buscar;
-buscar=fopen("vendedor.dat","rb");
-if(buscar==NULL){
-cout<<"No se pudo abrir este archivo"<<endl;
-return;
-}
-Vendedor obj;
-bool encontrado=false;
-
-while(fread(&obj,sizeof(Vendedor),1,buscar)!=0){
-if(obj.getId()==idV){
-cout<<"Id encontrado"<<endl;
-fclose(buscar);
-encontrado=true;
-}
-if(!encontrado){
-cout<<"No se encontro este id"<<endl;
-}
-fclose(buscar);
-}
-
-}
 
 
 void ArchivoVendedor::darAlta(){
@@ -161,5 +137,31 @@ idVendedor++;
 }
 fclose(idV);
 return idVendedor+1;
+}
+
+void ArchivoVendedor::buscarVendedor(int idV){
+FILE* buscarV;
+buscarV=fopen("vendedor.dat","rb");
+if(buscarV==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Vendedor obj;
+bool encontrado=false;
+while(fread(&obj,sizeof(Vendedor),1,buscarV)!=0){
+if(obj.getId()==idV&&obj.getEstadoVendedor()==true){
+cout<<"Nombre: "<<obj.getNombre()<<endl;
+cout<<"D.N.I: "<<obj.getDni()<<endl;
+cout<<"Correo: "<<obj.getCorreo()<<endl;
+cout<<"Telefono: "<<obj.getTelefono()<<endl;
+cout<<"Id: "<<obj.getId()<<endl;
+encontrado=true;
+}
+}
+if(!encontrado){
+cout<<"El id ingresado no ha sido encontrado"<<endl;
+return;
+}
+fclose(buscarV);
 }
 #endif // ARCHIVOVENDEDOR_H_INCLUDED
