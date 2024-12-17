@@ -6,6 +6,7 @@ public:
 void darAltaAuto();
 void listarAutos();
 int idAuto();
+void buscarAuto(int idA);
 };
 
 void ArchivoAuto::darAltaAuto(){
@@ -90,5 +91,31 @@ idAuto++;
 }
 fclose(idA);
 return idAuto+1;
+}
+
+void ArchivoAuto::buscarAuto(int idA){
+FILE* buscarAuto;
+buscarAuto=fopen("autos.dar","rb");
+if(buscarAuto==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Auto obj;
+bool encontrado=false;
+while(fread(&obj,sizeof(Auto),1,buscarAuto)!=0){
+if(obj.getIdAuto()==idA&&obj.getEstado()==true){
+cout<<"Nombre: "<<obj.getNombre()<<endl;
+cout<<"Marca: "<<obj.getMarca()<<endl;
+cout<<"Modelo: "<<obj.getModelo()<<endl;
+cout<<"Precio: "<<obj.getPrecio()<<endl;
+cout<<"Id: "<<obj.getIdAuto()<<endl;
+encontrado=true;
+}
+}
+if(!encontrado){
+cout<<"No se encontro el id ingresado"<<endl;
+return;
+}
+fclose(buscarAuto);
 }
 #endif // ARCHIVOAUTOS_H_INCLUDED
