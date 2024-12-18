@@ -13,7 +13,7 @@ void listarVendedores();
 void iniciarSecion();
 int idUnico();
 void buscarVendedor(int idV);
-
+void darBaja();
 };
 
 
@@ -164,4 +164,38 @@ return;
 }
 fclose(buscarV);
 }
+
+
+void ArchivoVendedor::darBaja(){
+FILE* baja;
+baja=fopen("vendedor.dat","rb+");
+if(baja==NULL){
+cout<<"No se pudo abrir el archivo"<<endl;
+return;
+}
+Vendedor obj;
+int id;
+bool encontrado=false;
+cout<<"Ingrese el id a dar de baja: ";
+cin>>id;
+while(fread(&obj,sizeof(Vendedor),1,baja)!=0){
+if(obj.getId()==id&&obj.getEstadoVendedor()==true){
+cout<<"Nombre: "<<obj.getNombre()<<endl;
+cout<<"D.N.I: "<<obj.getDni()<<endl;
+cout<<"Correo: "<<obj.getCorreo()<<endl;
+cout<<"Telefono: "<<obj.getTelefono()<<endl;
+obj.setEstado(false);
+encontrado=true;
+long posicion=ftell(baja)- sizeof(Vendedor);
+fseek(baja, posicion, SEEK_SET);
+fwrite(&obj, sizeof(Vendedor), 1, baja);
+cout<<"Vendedor dado de baja correctamente"<<endl;
+}
+}
+if(!encontrado){
+cout<<"No se ha logrado dar de baja el id ingresado"<<endl;
+}
+fclose(baja);
+}
+
 #endif // ARCHIVOVENDEDOR_H_INCLUDED

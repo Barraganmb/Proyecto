@@ -7,6 +7,7 @@ void darAltaAuto();
 void listarAutos();
 int idAuto();
 void buscarAuto(int idA);
+void bajaAuto();
 };
 
 void ArchivoAuto::darAltaAuto(){
@@ -118,4 +119,37 @@ return;
 }
 fclose(buscarAuto);
 }
+
+void ArchivoAuto::bajaAuto(){
+FILE* bajaA;
+bajaA=fopen("autos.dat","rb+");
+if(bajaA==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Auto obj;
+int id;
+bool encontrado=false;
+cout<<"Ingrese el id del auto a dar de baja: ";
+cin>>id;
+while(fread(&obj,sizeof(Auto),1,bajaA)!=0){
+if(obj.getIdAuto()&&obj.getEstado()==true){
+cout<<"Nombre: "<<obj.getNombre()<<endl;
+cout<<"Marca: "<<obj.getMarca()<<endl;
+cout<<"Modelo; "<<obj.getModelo()<<endl;
+cout<<"Precio: "<<obj.getPrecio()<<endl;
+obj.setEstadoA(false);
+encontrado=true;
+long posicion=ftell(bajaA)- sizeof(Auto);
+fseek(bajaA, posicion, SEEK_SET);
+fwrite(&obj, sizeof(Auto), 1, bajaA);
+cout<<"Auto dado de baja correctamente"<<endl;
+}
+}
+if(!encontrado){
+cout<<"No se logro dar de baja el id del auto ingresado"<<endl;
+}
+fclose(bajaA);
+}
+
 #endif // ARCHIVOAUTOS_H_INCLUDED
