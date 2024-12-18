@@ -404,7 +404,7 @@ if(obj.getId()==id&&obj.getEstadoVendedor()==true){
 cout<<"Ingrese clave actual: ";
 cin.ignore();
 cin.getline(cl,20,'\n');
-if(obj.getClave()==cl){
+if(strcmp(obj.getClave(),cl)==0){
 cout<<"Ingrese su nueva clave: ";
 cin.ignore();
 cin.getline(cl,20,'\n');
