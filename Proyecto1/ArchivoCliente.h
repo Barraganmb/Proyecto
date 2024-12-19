@@ -11,6 +11,11 @@ void darAltaCliente();
 void listarClientes();
 int idCliente();
 void buscarCliente(int idC);
+void modificarCliente();
+void modificarNombreCliente();
+void modificarDNICliente();
+void modificarTelefonoCliente();
+void modificarCorreoCliente();
 
 };
 
@@ -95,7 +100,7 @@ return idCliente+1;
 
 void ArchivoCliente::buscarCliente(int idC){
 FILE* buscarCliente;
-buscarCliente=fopen("cliente.dar","rb");
+buscarCliente=fopen("cliente.dat","rb");
 if(buscarCliente==NULL){
 cout<<"No se logro abrir este archivo"<<endl;
 return;
@@ -117,6 +122,180 @@ cout<<"No se encontro el id ingresado"<<endl;
 return;
 }
 fclose(buscarCliente);
+}
+
+void ArchivoCliente::modificarCliente(){
+FILE* modificarC;
+modificarC=fopen("cliente.dat","rb+");
+if(modificarC==NULL){
+cout<<"No se ha logrado abrir este archivo"<<endl;
+return;
+}
+Cliente obj;
+int id,dni;
+char nombre[35];
+char correo[35];
+char telefono[15];
+cout<<"Ingrese el id del cliente a modificar: ";
+cin>>id;
+while(fread(&obj,sizeof(Cliente),1,modificarC)!=0){
+if(obj.getIdCliente()==id){
+cout<<"Ingrese los nuevos datos"<<endl;
+cout<<"Nombre: ";
+cin.ignore();
+cin.getline(nombre,35,'\n');
+obj.setNombreCliente(nombre);
+cout<<"D.N.I: ";
+cin>>dni;
+obj.setDniCliente(dni);
+cout<<"Correo: ";
+cin.ignore();
+cin.getline(correo,35,'\n');
+obj.setCorreoCliente(correo);
+cout<<"Telefono: ";
+cin.ignore();
+cin.getline(telefono,15,'\n');
+obj.setTelefono(telefono);
+
+long posicion=ftell(modificarC)- sizeof(Cliente);
+fseek(modificarC, posicion, SEEK_SET);
+fwrite(&obj, sizeof(Cliente), 1, modificarC);
+cout<<"Los datos fueron modificados correctamente"<<endl;
+}
+}
+fclose(modificarC);
+}
+
+void ArchivoCliente::modificarNombreCliente(){
+FILE* nombreC;
+nombreC=fopen("cliente.dat","rb+");
+if( nombreC==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Cliente obj;
+char nom[35];
+int id;
+bool encontrado=false;
+cout<<"Ingrese el id del cliente a modificar: ";
+cin>>id;
+while(fread(&obj,sizeof(Cliente),1,nombreC)!=0){
+if(obj.getIdCliente()==id){
+cout<<"Nombre actual: "<<obj.getNombreCliente();
+cout<<"Nombre: ";
+cin.ignore();
+cin.getline(nom,35,'\n');
+obj.setNombreCliente(nom);
+long posicion=ftell(nombreC)- sizeof(Cliente);
+fseek(nombreC, posicion, SEEK_SET);
+fwrite(&obj, sizeof(Cliente), 1, nombreC);
+cout<<"Se modifico el nombre correctamente"<<endl;
+encontrado=true;
+}
+}
+if(!encontrado){
+cout<<"No se ha logrado modificar el nombre"<<endl;
+}
+fclose(nombreC);
+}
+
+void ArchivoCliente::modificarDNICliente(){
+FILE* dni;
+dni=fopen("cliente.dat","rb+");
+if(dni==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Cliente obj;
+int d;
+int id;
+bool encontrado=false;
+cout<<"Ingrese el id del cliente a modificar: ";
+cin>>id;
+while(fread(&obj,sizeof(Cliente),1,dni)!=0){
+if(obj.getIdCliente()==id){
+cout<<"D.N.I actual: "<<obj.getDniCliente();
+cout<<"D.N.I: ";
+cin.ignore();
+cin>>d;
+obj.setDniCliente(d);
+long posicion=ftell(dni)- sizeof(Cliente);
+fseek(dni, posicion, SEEK_SET);
+fwrite(&obj, sizeof(Cliente), 1, dni);
+cout<<"Se modifico el dni correctamente"<<endl;
+encontrado=true;
+}
+}
+if(!encontrado){
+cout<<"No se ha logrado modificar el dni"<<endl;
+}
+fclose(dni);
+}
+
+void ArchivoCliente::modificarCorreoCliente(){
+FILE* correo;
+correo=fopen("cliente.dat","rb+");
+if(correo==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Cliente obj;
+char co[35];
+int id;
+bool encontrado=false;
+cout<<"Ingrese el id del cliente a modificar: ";
+cin>>id;
+while(fread(&obj,sizeof(Cliente),1,correo)!=0){
+if(obj.getIdCliente()==id){
+cout<<"Correo actual: "<<obj.getCorreoCliente();
+cout<<"Correo: ";
+cin.ignore();
+cin.getline(co,35,'\n');
+obj.setCorreoCliente(co);
+long posicion=ftell(correo)- sizeof(Cliente);
+fseek(correo, posicion, SEEK_SET);
+fwrite(&obj, sizeof(Cliente), 1, correo);
+cout<<"Se modifico el correo correctamente"<<endl;
+encontrado=true;
+}
+}
+if(!encontrado){
+cout<<"No se ha logrado modificar el correo"<<endl;
+}
+fclose(correo);
+}
+
+void ArchivoCliente::modificarTelefonoCliente(){
+FILE* telefono;
+telefono=fopen("cliente.dat","rb+");
+if(telefono==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Cliente obj;
+char tel[15];
+int id;
+bool encontrado=false;
+cout<<"Ingrese el id del Cliente a modificar: ";
+cin>>id;
+while(fread(&obj,sizeof(Cliente),1,telefono)!=0){
+if(obj.getIdCliente()==id){
+cout<<"Telefono actual: "<<obj.getTelefonoCliente();
+cout<<"Telefono: ";
+cin.ignore();
+cin.getline(tel,15,'\n');
+obj.setTelefono(tel);
+long posicion=ftell(telefono)- sizeof(Cliente);
+fseek(telefono, posicion, SEEK_SET);
+fwrite(&obj, sizeof(Cliente), 1, telefono);
+cout<<"Se modifico el telefono correctamente"<<endl;
+encontrado=true;
+}
+}
+if(!encontrado){
+cout<<"No se ha logrado modificar el telefono"<<endl;
+}
+fclose(telefono);
 }
 
 #endif // ARCHIVOCLIENTE_H_INCLUDED

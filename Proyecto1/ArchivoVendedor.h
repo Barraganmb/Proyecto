@@ -117,7 +117,7 @@ cin.ignore();
 cin.getline(clave,20,'\n');
 
 while(fread(&obj,sizeof (Vendedor),1,iniciar)!=0){
-if(obj.getCorreo()==correo&&obj.getClave()==clave){
+if(strcmp(obj.getCorreo(),correo)&&strcmp(obj.getClave(),clave)){
 cout<<"inicio exitoso"<<endl;
 fclose(iniciar);
 }
