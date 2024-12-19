@@ -20,6 +20,7 @@ void modificarDni();
 void modificarCorreo();
 void modificarTelefono();
 void modificarClave();
+void recuperarClave();
 };
 
 
@@ -117,7 +118,7 @@ cin.ignore();
 cin.getline(clave,20,'\n');
 
 while(fread(&obj,sizeof (Vendedor),1,iniciar)!=0){
-if(strcmp(obj.getCorreo(),correo)&&strcmp(obj.getClave(),clave)){
+if(strcmp(obj.getCorreo(),correo)==0&&strcmp(obj.getClave(),clave)==0){
 cout<<"inicio exitoso"<<endl;
 fclose(iniciar);
 }
@@ -414,11 +415,56 @@ fseek(clave, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, clave);
 cout<<"Se modifico la clave correctamente"<<endl;
 encontrado=true;
-}}
+}
+}
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar la clave"<<endl;
 }
 fclose(clave);
+}
+
+void ArchivoVendedor::recuperarClave(){
+FILE* recuperar;
+recuperar=fopen("vendedor.dat","rb+");
+if(recuperar==NULL){
+cout<<"No se ha logrado abrir est archivo"<<endl;
+return;
+}
+Vendedor obj;
+char clave[20];
+char correo[35];
+int dni,id;
+bool encontrado=false;
+cout<<"RECUPERAR CLAVE"<<endl;
+cout<<"Ingrese su id: ";
+cin.ignore();
+cin>>id;
+while(fread(&obj,sizeof(Vendedor),1,recuperar)!=0){
+if(obj.getId()==id&&obj.getEstadoVendedor()==true){
+cout<<"Nombre: "<<obj.getNombre()<<endl;
+cout<<"Ingrese su dni: ";
+cin.ignore();
+cin>>dni;
+cout<<"Ingrese su correo: ";
+cin.ignore();
+cin.getline(correo,35,'\n');
+if(obj.getDni()==dni&&strcmp(obj.getCorreo(),correo)==0){
+cout<<"Ingrese su nueva clave: ";
+cin.ignore();
+cin.getline(clave,20,'\n');
+obj.setClave(clave);
+long posicion=ftell(recuperar)- sizeof(Vendedor);
+fseek(recuperar, posicion, SEEK_SET);
+fwrite(&obj, sizeof(Vendedor), 1, recuperar);
+cout<<"La nueva clave fue modificada correctamente"<<endl;
+encontrado=true;
+}
+}
+}
+if(!encontrado){
+cout<<"No se ha logrado modificar la clave correctamente"<<endl;
+}
+fclose(recuperar);
 }
 #endif // ARCHIVOVENDEDOR_H_INCLUDED
