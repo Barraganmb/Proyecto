@@ -26,7 +26,7 @@ switch(opcion){
 
 case 1:
     system("cls");
-    obj.iniciarSecion();
+  menuVendedores();
     break;
 
 case 2:
@@ -37,7 +37,7 @@ obj1.listarClientes();
 
 case 3:
     system("cls");
-obj1.darAltaCliente();
+obj.darAlta();
     break;
 
 case 4:
@@ -62,7 +62,36 @@ case 0:
 
 
 void menuVendedores(){
-cout<<"hola";
+
+int opcion;
+ArchivoVendedor obj;
+while(true){
+cout<<"1)Listar vendedores"<<endl;
+cout<<"2)Buscar vendedor "<<endl;
+cout<<"3)Modificar Datos"<<endl;
+cout<<"0)Salir"<<endl;
+cin>>opcion;
+switch(opcion){
+case 1:
+    system("cls");
+    obj.listarVendedores();
+    break;
+
+case 2:
+    system("cls");
+    obj.buscarVendedor();
+
+    break;
+
+case 0:
+    system("cls");
+    menu();
+    break;
+
 }
+
+}
+}
+
 
 //FUNCIONES PARA LOS MENUS

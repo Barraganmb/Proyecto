@@ -1,8 +1,8 @@
 #ifndef CLASSVENDEDOR_H_INCLUDED
 #define CLASSVENDEDOR_H_INCLUDED
+
 #include <iostream>
 #include <cstring>
-
 class Vendedor{
 
 private:
@@ -13,6 +13,7 @@ char correo[35];
 int id;
 char clave[20];
 bool estadoV;
+//void menuV();
 
 public:
 Vendedor(const char* n="XXX",int d=0,const char* t="1100000000",const char* c="vendedor@gmail.com",int i=0, const char* cv="12345678", bool eV=false){
@@ -82,5 +83,6 @@ return estadoV;
 }
 
 };
+
 
 #endif // CLASSVENDEDOR_H_INCLUDED

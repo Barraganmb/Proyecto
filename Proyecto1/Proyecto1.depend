@@ -3,11 +3,11 @@
 	<iostream>
 	"DeclaracionDeFunciones.h"
 
-1734371211 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classvendedor.h
+1734915878 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classvendedor.h
 	<iostream>
 	<cstring>
 
-1734643590 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivovendedor.h
+1735165533 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivovendedor.h
 	"ClassVendedor.h"
 	<cstdio>
 	<cstring>
@@ -23,7 +23,7 @@
 
 1734371597 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\declaraciondefunciones.h
 
-1734458601 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
+1735165214 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
 	<iostream>
 	"ClassVendedor.h"
 	"ArchivoVendedor.h"

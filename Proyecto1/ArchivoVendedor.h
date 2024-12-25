@@ -12,7 +12,7 @@ void darAlta();
 void listarVendedores();
 void iniciarSecion();
 int idUnico();
-void buscarVendedor(int idV);
+void buscarVendedor();
 void darBaja();
 void modificarVendedor();
 void modificarNombre();
@@ -26,7 +26,7 @@ void recuperarClave();
 
 void ArchivoVendedor::darAlta(){
 FILE* alta;
-alta=fopen("vendedor.dat", "ab");
+alta=fopen("vendedor.dat", "ab+");
 if(alta==NULL){
 cout<<"No se logro crear un nuevo archivo"<<endl;
 return;
@@ -37,7 +37,7 @@ int dni, id;
 char telefono[15];
 char correo[35];
 char clave[20];
-bool estado=false;
+
 
 cout<<"Nombre completo: ";
 cin.ignore();
@@ -54,7 +54,7 @@ cin.getline(telefono,15,'\n');
 obj.setTelefono(telefono);
 
 cout<<"Correo: ";
-cin.ignore();
+//cin.ignore();
 cin.getline(correo,35,'\n');
 obj.setCorreo(correo);
 
@@ -62,9 +62,7 @@ cout<<"Clave: ";
 cin.ignore();
 cin.getline(clave,20,'\n');
 obj.setClave(clave);
-
-estado=true;
-obj.setEstado(estado);
+obj.setEstado(true);
 
 id=idUnico();
 cout<<"Su id asignado es: "<<id<<endl;
@@ -83,19 +81,20 @@ return;
 }
 Vendedor obj;
 while(fread(&obj,sizeof(Vendedor),1,listar)!=0){
-if(obj.getEstadoVendedor()==true){
+//if(obj.getEstadoVendedor()==true){
 cout<<"Nombre: "<<obj.getNombre()<<endl;
 cout<<"D.N.I: "<<obj.getDni()<<endl;
 cout<<"Telefono; "<<obj.getTelefono()<<endl;
 cout<<"Correo: "<<obj.getCorreo()<<endl;
 cout<<"Id: "<<obj.getId()<<endl;
+//}
+
 }
 fclose(listar);
-cout<<endl;
 system("pause");
 system("cls");
 }
-}
+
 
 
 void ArchivoVendedor::iniciarSecion(){
@@ -146,7 +145,7 @@ fclose(idV);
 return idVendedor+1;
 }
 
-void ArchivoVendedor::buscarVendedor(int idV){
+void ArchivoVendedor::buscarVendedor(){
 FILE* buscarV;
 buscarV=fopen("vendedor.dat","rb");
 if(buscarV==NULL){
@@ -154,9 +153,12 @@ cout<<"No se logro abrir este archivo"<<endl;
 return;
 }
 Vendedor obj;
+int id;
 bool encontrado=false;
+cout<<"Ingrese el id que queire buscar: ";
+cin>>id;
 while(fread(&obj,sizeof(Vendedor),1,buscarV)!=0){
-if(obj.getId()==idV&&obj.getEstadoVendedor()==true){
+if(obj.getId()==id&&obj.getEstadoVendedor()==true){
 cout<<"Nombre: "<<obj.getNombre()<<endl;
 cout<<"D.N.I: "<<obj.getDni()<<endl;
 cout<<"Correo: "<<obj.getCorreo()<<endl;
@@ -171,6 +173,7 @@ return;
 }
 fclose(buscarV);
 }
+
 
 
 void ArchivoVendedor::darBaja(){
