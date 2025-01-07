@@ -3,4 +3,7 @@
 
 void menu();
 void menuVendedores();
+void menuModificar();
+void menuModificarCliente();
+void menuCliente();
 #endif // DECLARACIONDEFUNCIONES_H_INCLUDED
