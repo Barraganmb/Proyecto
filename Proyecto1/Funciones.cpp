@@ -40,7 +40,7 @@ case 3:
     break;
 
 case 0:
-    return ;
+    return;
     break;
 }
 }
@@ -54,6 +54,8 @@ while(true){
 cout<<"1)Listar vendedores"<<endl;
 cout<<"2)Buscar vendedor "<<endl;
 cout<<"3)Modificar Datos"<<endl;
+cout<<"4)Menu clientes"<<endl;
+cout<<"5)Menu vehiculo"<<endl;
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -65,12 +67,22 @@ case 1:
 case 2:
     system("cls");
     obj.buscarVendedor();
-
     break;
 
 case 3:
     system("cls");
     menuModificar();
+    break;
+
+case 4:
+    system("cls");
+    menuCliente();
+    break;
+
+case 5:
+    system("cls");
+    menuAutos();
+    break;
 
 case 0:
     system("cls");
@@ -211,4 +223,91 @@ case 0:
 }
 }
 }
-//FUNCIONES PARA LOS MENUS
+
+
+void menuAutos(){
+int opcion;
+ArchivoAuto obj;
+while(true){
+cout<<"1)Dar de alta vehiculo"<<endl;
+cout<<"2)Buscar vehiculo"<<endl;
+cout<<"3)Dar de baja vehiculo"<<endl;
+cout<<"4)Modificar vehiculo"<<endl;
+cout<<"0)Salir"<<endl;
+cin>>opcion;
+switch(opcion){
+case 1:
+    system("cls");
+    obj.darAltaAuto();
+    break;
+
+case 2:
+    system("cls");
+    obj.buscarAuto(0);
+    break;
+
+case 3:
+    system("cls");
+    obj.bajaAuto();
+    break;
+
+case 4:
+    system("cls");
+    menuModificarAuto();
+    break;
+
+case 0:
+    system("cls");
+    return;
+    break;
+}
+}
+}
+
+
+
+void menuModificarAuto(){
+int opcion;
+ArchivoAuto obj;
+while(true){
+cout<<"1)Modificar todos los datos"<<endl;
+cout<<"2)Modificar nombre"<<endl;
+cout<<"3)Modificar marca"<<endl;
+cout<<"4)Modificar modelo"<<endl;
+cout<<"5)Modificar precio"<<endl;
+cout<<"0)Salir"<<endl;
+cin>>opcion;
+switch(opcion){
+case 1:
+    system("cls");
+    obj.modificarAuto();
+    break;
+
+case 2:
+    system("cls");
+    obj.modificarMarca();
+    break;
+
+case 3:
+    system("cls");
+    obj.modificarModelo();
+    break;
+
+case 4:
+    system("cls");
+    obj.modificarPrecio();
+    break;
+
+case 5:
+    system("cls");
+    return;
+    break;
+
+case 0:
+    return;
+    break;
+}
+}
+}
+
+
