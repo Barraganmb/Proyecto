@@ -6,4 +6,7 @@ void menuVendedores();
 void menuModificar();
 void menuModificarCliente();
 void menuCliente();
+void menuAutos();
+void menuModificarAuto();
+
 #endif // DECLARACIONDEFUNCIONES_H_INCLUDED
