@@ -26,12 +26,13 @@ switch(opcion){
 case 1:
     system("cls");
     obj.iniciarSecion();
+    system("cls");
     menuVendedores();
     break;
 
 case 2:
     system("cls");
-    obj1.listarClientes();
+    obj.recuperarClave();
     break;
 
 case 3:
@@ -54,8 +55,8 @@ while(true){
 cout<<"1)Listar vendedores"<<endl;
 cout<<"2)Buscar vendedor "<<endl;
 cout<<"3)Modificar Datos"<<endl;
-cout<<"4)Menu clientes"<<endl;
-cout<<"5)Menu vehiculo"<<endl;
+cout<<"4)Clientes"<<endl;
+cout<<"5)Vehiculos"<<endl;
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -132,6 +133,7 @@ case 5:
     break;
 
 case 0:
+    system("cls");
     return;
     break;
 }
@@ -163,7 +165,7 @@ case 2:
 
 case 3:
     system("cls");
-    obj.buscarCliente(0);
+    obj.buscarCliente();
     break;
 
 case 4:
@@ -231,8 +233,9 @@ ArchivoAuto obj;
 while(true){
 cout<<"1)Dar de alta vehiculo"<<endl;
 cout<<"2)Buscar vehiculo"<<endl;
-cout<<"3)Dar de baja vehiculo"<<endl;
-cout<<"4)Modificar vehiculo"<<endl;
+cout<<"3)Listar vehiculo"<<endl;
+cout<<"4)Dar de baja vehiculo"<<endl;
+cout<<"5)Modificar vehiculo"<<endl;
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -243,15 +246,20 @@ case 1:
 
 case 2:
     system("cls");
-    obj.buscarAuto(0);
+    obj.buscarAuto();
     break;
 
 case 3:
     system("cls");
-    obj.bajaAuto();
+    obj.listarAutos();
     break;
 
 case 4:
+    system("cls");
+    obj.bajaAuto();
+    break;
+
+case 5:
     system("cls");
     menuModificarAuto();
     break;

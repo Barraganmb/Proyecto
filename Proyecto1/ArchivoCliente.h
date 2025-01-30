@@ -10,7 +10,7 @@ public:
 void darAltaCliente();
 void listarClientes();
 int idCliente();
-void buscarCliente(int idC);
+void buscarCliente();
 void modificarCliente();
 void modificarNombreCliente();
 void modificarDNICliente();
@@ -49,7 +49,7 @@ cin.getline(telefono,15,'\n');
 obj.setTelefono(telefono);
 
 cout<<"Correo: ";
-cin.ignore();
+//cin.ignore();
 cin.getline(correo,35,'\n');
 obj.setCorreoCliente(correo);
 
@@ -98,7 +98,7 @@ fclose(idC);
 return idCliente+1;
 }
 
-void ArchivoCliente::buscarCliente(int idC){
+void ArchivoCliente::buscarCliente(){
 FILE* buscarCliente;
 buscarCliente=fopen("cliente.dat","rb");
 if(buscarCliente==NULL){
@@ -107,6 +107,9 @@ return;
 }
 Cliente obj;
 bool encontrado=false;
+int idC;
+cout<<"Ingrese el id que quiere buscar: ";
+cin>>idC;
 while(fread(&obj,sizeof(Cliente),1,buscarCliente)!=0){
 if(obj.getIdCliente()==idC){
 cout<<"Nombre: "<<obj.getNombreCliente()<<endl;
@@ -136,6 +139,7 @@ int id,dni;
 char nombre[35];
 char correo[35];
 char telefono[15];
+bool encontrado=false;
 cout<<"Ingrese el id del cliente a modificar: ";
 cin>>id;
 while(fread(&obj,sizeof(Cliente),1,modificarC)!=0){
@@ -161,9 +165,15 @@ long posicion=ftell(modificarC)- sizeof(Cliente);
 fseek(modificarC, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Cliente), 1, modificarC);
 cout<<"Los datos fueron modificados correctamente"<<endl;
-}
-}
+encontrado=true;
 fclose(modificarC);
+return;
+}
+if(!encontrado){
+cout<<"No se ha logrado modificar los datos del cliente"<<endl;
+return;
+}
+}
 }
 
 void ArchivoCliente::modificarNombreCliente(){
@@ -181,7 +191,7 @@ cout<<"Ingrese el id del cliente a modificar: ";
 cin>>id;
 while(fread(&obj,sizeof(Cliente),1,nombreC)!=0){
 if(obj.getIdCliente()==id){
-cout<<"Nombre actual: "<<obj.getNombreCliente();
+cout<<"Nombre actual: "<<obj.getNombreCliente()<<endl;
 cout<<"Nombre: ";
 cin.ignore();
 cin.getline(nom,35,'\n');
@@ -191,12 +201,14 @@ fseek(nombreC, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Cliente), 1, nombreC);
 cout<<"Se modifico el nombre correctamente"<<endl;
 encontrado=true;
+fclose(nombreC);
+return;
 }
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar el nombre"<<endl;
+return;
 }
-fclose(nombreC);
 }
 
 void ArchivoCliente::modificarDNICliente(){
@@ -224,12 +236,14 @@ fseek(dni, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Cliente), 1, dni);
 cout<<"Se modifico el dni correctamente"<<endl;
 encontrado=true;
+fclose(dni);
+return;
 }
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar el dni"<<endl;
+return;
 }
-fclose(dni);
 }
 
 void ArchivoCliente::modificarCorreoCliente(){
@@ -257,12 +271,14 @@ fseek(correo, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Cliente), 1, correo);
 cout<<"Se modifico el correo correctamente"<<endl;
 encontrado=true;
+fclose(correo);
+return;
 }
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar el correo"<<endl;
+return;
 }
-fclose(correo);
 }
 
 void ArchivoCliente::modificarTelefonoCliente(){
@@ -290,12 +306,14 @@ fseek(telefono, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Cliente), 1, telefono);
 cout<<"Se modifico el telefono correctamente"<<endl;
 encontrado=true;
+fclose(telefono);
+return;
 }
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar el telefono"<<endl;
+return;
 }
-fclose(telefono);
 }
 
 #endif // ARCHIVOCLIENTE_H_INCLUDED

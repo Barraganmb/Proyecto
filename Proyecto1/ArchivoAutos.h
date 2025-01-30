@@ -6,7 +6,7 @@ public:
 void darAltaAuto();
 void listarAutos();
 int idAuto();
-void buscarAuto(int idA);
+void buscarAuto();
 void bajaAuto();
 void modificarAuto();
 void modificarNombre();
@@ -35,12 +35,12 @@ cin.getline(nombre,30, '\n');
 obj.setNombre(nombre);
 
 cout<<"Marca: ";
-cin.ignore();
+//cin.ignore();
 cin.getline(marca,30,'\n');
 obj.setMarca(marca);
 
 cout<<"Modelo: ";
-cin.ignore();
+//cin.ignore();
 cin.getline(modelo,30,'\n');
 obj.setModelo(modelo);
 
@@ -57,8 +57,8 @@ obj.setId(id);
 
 fwrite(&obj,sizeof(Auto),1,altaAuto);
 fclose(altaAuto);
-
 }
+
 
 void ArchivoAuto::listarAutos(){
 FILE* listarA;
@@ -76,10 +76,11 @@ cout<<"Marca: "<<objA.getMarca()<<endl;
 cout<<"Modelo: "<<objA.getModelo()<<endl;
 cout<<"Precio: "<<objA.getPrecio()<<endl;
 cout<<"Id: "<<objA.getIdAuto()<<endl;
+}
+}
 fclose(listarA);
-}
-}
-
+system("pause");
+system("cls");
 }
 
 
@@ -99,14 +100,17 @@ fclose(idA);
 return idAuto+1;
 }
 
-void ArchivoAuto::buscarAuto(int idA){
+void ArchivoAuto::buscarAuto(){
 FILE* buscarAuto;
-buscarAuto=fopen("autos.dar","rb");
+buscarAuto=fopen("autos.dat","rb");
 if(buscarAuto==NULL){
 cout<<"No se logro abrir este archivo"<<endl;
 return;
 }
 Auto obj;
+int idA;
+cout<<"Ingrese el id del vehiculo que quiere buscar: ";
+cin>>idA;
 bool encontrado=false;
 while(fread(&obj,sizeof(Auto),1,buscarAuto)!=0){
 if(obj.getIdAuto()==idA&&obj.getEstado()==true){
@@ -149,12 +153,14 @@ long posicion=ftell(bajaA)- sizeof(Auto);
 fseek(bajaA, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Auto), 1, bajaA);
 cout<<"Auto dado de baja correctamente"<<endl;
+fclose(bajaA);
+return;
 }
 }
 if(!encontrado){
 cout<<"No se logro dar de baja el id del auto ingresado"<<endl;
+return;
 }
-fclose(bajaA);
 }
 
 
@@ -202,13 +208,14 @@ long posicion=ftell(modificarA)- sizeof(Auto);
 fseek(modificarA, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Auto), 1, modificarA);
 cout<<"Se modificaron los datos correctamente"<<endl;
-
+fclose(modificarA);
+return;
 }
 }
 if(!modificado){
 cout<<"Los datos no fueron modificados correctamente"<<endl;
+return;
 }
-fclose(modificarA);
 }
 
 void ArchivoAuto::modificarNombre(){
@@ -237,14 +244,16 @@ long posicion=ftell(nombreAuto)- sizeof(Auto);
 fseek(nombreAuto, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Auto), 1, nombreAuto);
 cout<<"Nombre modificado correctamente"<<endl;
-
+fclose(nombreAuto);
+return;
 }
 }
 if(!modificado){
 cout<<"No se ha logrado modificar el nombre de este auto"<<endl;
+return;
 }
-fclose(nombreAuto);
 }
+
 
 void ArchivoAuto::modificarMarca(){
 FILE* marca;
@@ -272,13 +281,16 @@ long posicion=ftell(marca)- sizeof(Auto);
 fseek(marca, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Auto), 1, marca);
 cout<<"Marca modificada correctamente"<<endl;
+fclose(marca);
+return;
 }
 }
 if(!modificado){
 cout<<"No se ha logrado modificar la marca de este auto"<<endl;
+return;
 }
-fclose(marca);
 }
+
 
 void ArchivoAuto::modificarModelo(){
 FILE* modelo;
@@ -306,13 +318,17 @@ long posicion=ftell(modelo)- sizeof(Auto);
 fseek(modelo, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Auto), 1, modelo);
 cout<<"Modelo modificado correctamente"<<endl;
+fclose(modelo);
+return;
 }
 }
 if(!modificado){
 cout<<"No se ha logrado modificar el modelo de este auto"<<endl;
+return;
 }
-fclose(modelo);
 }
+
+
 void ArchivoAuto::modificarPrecio(){
 FILE* precio;
 precio=fopen("autos.dat","rb+");
@@ -339,11 +355,13 @@ long posicion=ftell(precio)- sizeof(Auto);
 fseek(precio, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Auto), 1, precio);
 cout<<"Precio modificado correctamente"<<endl;
+fclose(precio);
+return;
 }
 }
 if(!modificado){
 cout<<"No se ha logrado modificar el precio de este auto"<<endl;
+return;
 }
-fclose(precio);
 }
 #endif // ARCHIVOAUTOS_H_INCLUDED
