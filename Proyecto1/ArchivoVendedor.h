@@ -26,7 +26,7 @@ void recuperarClave();
 
 void ArchivoVendedor::darAlta(){
 FILE* alta;
-alta=fopen("vendedor.dat", "ab+");
+alta=fopen("vendedor.dat", "ab");
 if(alta==NULL){
 cout<<"No se logro crear un nuevo archivo"<<endl;
 return;
@@ -81,14 +81,13 @@ return;
 }
 Vendedor obj;
 while(fread(&obj,sizeof(Vendedor),1,listar)!=0){
-//if(obj.getEstadoVendedor()==true){
+if(obj.getEstadoVendedor()==true){
 cout<<"Nombre: "<<obj.getNombre()<<endl;
 cout<<"D.N.I: "<<obj.getDni()<<endl;
 cout<<"Telefono; "<<obj.getTelefono()<<endl;
 cout<<"Correo: "<<obj.getCorreo()<<endl;
 cout<<"Id: "<<obj.getId()<<endl;
-//}
-
+}
 }
 fclose(listar);
 system("pause");
@@ -107,7 +106,7 @@ return;
 Vendedor obj;
 char correo[35];
 char clave[20];
-
+bool encontrado=false;
 cout<<"Ingrese su correo: ";
 cin.ignore();
 cin.getline(correo,35,'\n');
@@ -119,11 +118,12 @@ cin.getline(clave,20,'\n');
 while(fread(&obj,sizeof (Vendedor),1,iniciar)!=0){
 if(strcmp(obj.getCorreo(),correo)==0&&strcmp(obj.getClave(),clave)==0){
 cout<<"inicio exitoso"<<endl;
+encontrado=true;
 fclose(iniciar);
 }
-else{
-cout<<"No se encontraron los datos"<<endl;
 }
+if(!encontrado){
+cout<<"No se encontraron los datos"<<endl;
 }
 
 }
@@ -270,7 +270,7 @@ cout<<"Ingrese el id del vendedor a modificar: ";
 cin>>id;
 while(fread(&obj,sizeof(Vendedor),1,nombre)!=0){
 if(obj.getId()==id&&obj.getEstadoVendedor()==true){
-cout<<"Nombre actual: "<<obj.getNombre();
+cout<<"Nombre actual: "<<obj.getNombre()<<endl;
 cout<<"Nombre: ";
 cin.ignore();
 cin.getline(nom,35,'\n');
@@ -280,12 +280,13 @@ fseek(nombre, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, nombre);
 cout<<"Se modifico el nombre correctamente"<<endl;
 encontrado=true;
+fclose(nombre);
+return;
 }
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar el nombre"<<endl;
 }
-fclose(nombre);
 }
 
 void ArchivoVendedor::modificarDni(){
@@ -313,12 +314,14 @@ fseek(dni, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, dni);
 cout<<"Se modifico el dni correctamente"<<endl;
 encontrado=true;
+fclose(dni);
+return;
 }
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar el dni"<<endl;
+return;
 }
-fclose(dni);
 }
 
 
@@ -347,12 +350,15 @@ fseek(correo, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, correo);
 cout<<"Se modifico el correo correctamente"<<endl;
 encontrado=true;
+fclose(correo);
+return;
 }
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar el correo"<<endl;
+return;
 }
-fclose(correo);
+
 }
 
 
@@ -381,12 +387,14 @@ fseek(telefono, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, telefono);
 cout<<"Se modifico el telefono correctamente"<<endl;
 encontrado=true;
+fclose(telefono);
+return;
 }
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar el telefono"<<endl;
+return;
 }
-fclose(telefono);
 }
 
 
@@ -418,13 +426,15 @@ fseek(clave, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, clave);
 cout<<"Se modifico la clave correctamente"<<endl;
 encontrado=true;
+fclose(clave);
+return;
 }
 }
 }
 if(!encontrado){
 cout<<"No se ha logrado modificar la clave"<<endl;
+return;
 }
-fclose(clave);
 }
 
 void ArchivoVendedor::recuperarClave(){
@@ -469,5 +479,7 @@ if(!encontrado){
 cout<<"No se ha logrado modificar la clave correctamente"<<endl;
 }
 fclose(recuperar);
+system("pause");
+system("cls");
 }
 #endif // ARCHIVOVENDEDOR_H_INCLUDED
