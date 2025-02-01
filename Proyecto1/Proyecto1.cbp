@@ -33,9 +33,11 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="ArchivoAutos.h" />
+		<Unit filename="ArchivoCabecera.h" />
 		<Unit filename="ArchivoCliente.h" />
 		<Unit filename="ArchivoVendedor.h" />
 		<Unit filename="ClassAuto.h" />
+		<Unit filename="ClassCabecera.h" />
 		<Unit filename="ClassCliente.h" />
 		<Unit filename="ClassVendedor.h" />
 		<Unit filename="DeclaracionDeFunciones.h" />
