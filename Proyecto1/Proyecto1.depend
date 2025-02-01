@@ -23,16 +23,26 @@
 
 1737924048 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\declaraciondefunciones.h
 
-1738255819 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
+1738428507 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
 	<iostream>
 	"ClassVendedor.h"
 	"ArchivoVendedor.h"
 	"ArchivoCliente.h"
 	"DeclaracionDeFunciones.h"
 	"ArchivoAutos.h"
+	"ArchivoCabecera.h"
 
 1738261425 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivoautos.h
 	"ClassAuto.h"
 
 1734367394 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classauto.h
+
+1738445451 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivocabecera.h
+	"ClassCliente.h"
+	"ClassVendedor.h"
+	"ClassCabecera.h"
+
+1738445346 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classcabecera.h
+	<cstdio>
+	<cstring>
 

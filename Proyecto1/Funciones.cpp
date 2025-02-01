@@ -4,7 +4,7 @@
 #include "ArchivoCliente.h"
 #include "DeclaracionDeFunciones.h"
 #include "ArchivoAutos.h"
-
+#include "ArchivoCabecera.h"
 using namespace std;
 
 
@@ -13,6 +13,7 @@ void menu(){
 int opcion;
 ArchivoVendedor obj;
 ArchivoCliente obj1;
+ArchivoCabecera o;
 while(true){
 
 cout<<"1)Iniciar secion"<<endl;
@@ -38,6 +39,10 @@ case 2:
 case 3:
     system("cls");
     obj.darAlta();
+    break;
+
+case 4:
+    o.cabeceraVenta();
     break;
 
 case 0:
