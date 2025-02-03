@@ -7,6 +7,7 @@ class ArchivoCabecera{
 public:
 void cabeceraVenta();
 int idVenta();
+void listarCabeceras();
 };
 
 
@@ -33,7 +34,7 @@ ArchivoCabecera obj1;
 Cabecera obj;
 Cliente objC;
 Vendedor objV;
-int id,idC;
+int id,idC,d,m,a;
 char telc[15];
 char telV[15];
 char nomV[30];
@@ -41,6 +42,13 @@ char nomC[30];
 char correoV[30];
 char correoC[30];
 cout<<"Cabecera de la venta"<<endl;
+cout<<"Ingrese la fecha"<<endl;
+cout<<"Dia: ";
+cin>>d;
+cout<<"Mes: ";
+cin>>m;
+cout<<"Anio: ";
+cin>>a;
 cout<<"Ingrese el id del vendedor que realizo la venta: ";
 cin>>id;
 while(fread(&objV,sizeof(Vendedor),1,vendedor)!=0){
@@ -53,7 +61,7 @@ strcpy(correoV, objV.getCorreo());
 obj.setCorreoV(correoV);
 cout<<"Telefono: "<<objV.getTelefono()<<endl;
 strcpy(telV,objV.getTelefono());
-obj.setTelC(telV);
+obj.setTelV(telV);
 obj.setIdVendedor(id);
 }
 }
@@ -75,7 +83,9 @@ obj.setIdCliente(idC);
 }
 obj.setIdVenta(obj1.idVenta());
 cout<<"EL id de esta venta es: "<<obj.getIdVenta()<<endl;
-
+obj.setDia(d);
+obj.setMes(m);
+obj.setAnio(a);
 fwrite(&obj,sizeof(Cabecera),1,cabeceraV);
 
 fclose(cabeceraV);
@@ -100,5 +110,32 @@ fclose(idC);
 return idVenta+1;
 }
 
-
+void ArchivoCabecera::listarCabeceras(){
+FILE* listar;
+listar=fopen("Cabecera.dat","rb");
+if(listar==NULL){
+cout<<"No se logro abrir este archivo"<<endl;
+return;
+}
+Cabecera obj;
+while(fread(&obj,sizeof(Cabecera),1,listar)!=0){
+cout<<"Id de la venta: "<<obj.getIdVenta()<<endl;
+cout<<"Fecha: "<<obj.getDia()<<"/"<<obj.getMes()<<"/"<<obj.getAnio()<<endl;
+cout<<endl;
+cout<<"Datos del vendedor"<<endl;
+cout<<endl;
+cout<<"Id: "<<obj.getIdVendedor()<<endl;
+cout<<"Nombre: "<<obj.getNombreV()<<endl;
+cout<<"Correo: "<<obj.getCorreoV()<<endl;
+cout<<"Telefono: "<<obj.getTelV()<<endl;
+cout<<endl;
+cout<<"Datos del cliente"<<endl;
+cout<<endl;
+cout<<"Id: "<<obj.getIdCliente()<<endl;
+cout<<"Nombre: "<<obj.getNombreC()<<endl;
+cout<<"Correo: "<<obj.getCorreoC()<<endl;
+cout<<"Telefono: "<<obj.getTelC()<<endl;
+}
+fclose(listar);
+}
 #endif // ARCHIVOCABECERA_H_INCLUDED

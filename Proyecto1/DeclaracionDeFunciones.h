@@ -8,5 +8,6 @@ void menuModificarCliente();
 void menuCliente();
 void menuAutos();
 void menuModificarAuto();
-
+void menuVentas();
+void listarFacturas();
 #endif // DECLARACIONDEFUNCIONES_H_INCLUDED

@@ -21,9 +21,9 @@
 	<iostream>
 	<cstring>
 
-1737924048 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\declaraciondefunciones.h
+1738519705 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\declaraciondefunciones.h
 
-1738428507 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
+1738519832 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
 	<iostream>
 	"ClassVendedor.h"
 	"ArchivoVendedor.h"
@@ -31,18 +31,25 @@
 	"DeclaracionDeFunciones.h"
 	"ArchivoAutos.h"
 	"ArchivoCabecera.h"
+	"ArchivoDetalle.h"
 
 1738261425 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivoautos.h
 	"ClassAuto.h"
 
 1734367394 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classauto.h
 
-1738445451 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivocabecera.h
+1738448360 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivocabecera.h
 	"ClassCliente.h"
 	"ClassVendedor.h"
 	"ClassCabecera.h"
 
-1738445346 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classcabecera.h
+1738449468 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classcabecera.h
 	<cstdio>
 	<cstring>
+
+1738519681 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivodetalle.h
+	"ClassDetalle.h"
+	"ArchivoAutos.h"
+
+1738451330 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classdetalle.h
 

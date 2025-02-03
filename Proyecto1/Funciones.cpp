@@ -5,6 +5,7 @@
 #include "DeclaracionDeFunciones.h"
 #include "ArchivoAutos.h"
 #include "ArchivoCabecera.h"
+#include "ArchivoDetalle.h"
 using namespace std;
 
 
@@ -14,6 +15,7 @@ int opcion;
 ArchivoVendedor obj;
 ArchivoCliente obj1;
 ArchivoCabecera o;
+ArchivoDetalle ob;
 while(true){
 
 cout<<"1)Iniciar secion"<<endl;
@@ -41,10 +43,6 @@ case 3:
     obj.darAlta();
     break;
 
-case 4:
-    o.cabeceraVenta();
-    break;
-
 case 0:
     return;
     break;
@@ -62,6 +60,7 @@ cout<<"2)Buscar vendedor "<<endl;
 cout<<"3)Modificar Datos"<<endl;
 cout<<"4)Clientes"<<endl;
 cout<<"5)Vehiculos"<<endl;
+cout<<"6)Ventas"<<endl;
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -90,6 +89,10 @@ case 5:
     menuAutos();
     break;
 
+case 6:
+    system("cls");
+    menuVentas();
+    break;
 case 0:
     system("cls");
     menu();
@@ -323,4 +326,68 @@ case 0:
 }
 }
 
+void menuVentas(){
+int opcion;
+ArchivoCabecera objC;
+ArchivoDetalle objD;
+while(true){
+cout<<"1)Realizar una venta"<<endl;
+cout<<"2)Buscar una factura"<<endl;
+cout<<"3)Listar facturas"<<endl;
+cout<<"0)Salir"<<endl;
+cin>>opcion;
+switch(opcion){
+case 1:
+    system("cls");
+    cout<<"Factura"<<endl;
+    objC.cabeceraVenta();
+    objD.detalle();
+
+case 2:
+    system("cls");
+    break;
+
+case 3:
+    system("cls");
+    objC.listarCabeceras();
+    objD.listarDetalle();
+    break;
+
+case 0:
+    system("cls");
+    return;
+    break;
+}
+
+}
+
+}
+
+/*void listarFacturas(){
+FILE *cabecera, *detalle;
+cabecera=fopen("Cabecera.dat", "rb");
+if(cabecera==NULL){
+cout<<"No se ha logrado abrir este archivo"<<endl;
+return;
+}
+detalle=fopen("Detalle.dat", "rb");
+if(detalle==NULL){
+cout<<"No se ha logrado abrir este archivo"<<endl;
+return;
+}
+ArchivoCabecera obj;
+ArchivoDetalle obj1;
+Cabecera obj2;
+DetalleVenta obj3;
+/*int idD, idC;
+while(fread(&obj2,sizeof(Cabecera),1,cabecera)!=0){
+idC=obj2.getIdVenta();
+}
+while(fread(&obj3,sizeof(DetalleVenta),1,detalle)!=0){
+idD=obj3.getIdDetalle();
+}
+*///if(idC==idD){
+//obj.listarCabeceras();
+//obj1.listarDetalle();
+//}
 
