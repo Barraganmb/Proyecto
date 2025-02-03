@@ -7,16 +7,20 @@ using namespace std;
 class Cabecera{
 private:
 int idVenta;
-char nombreV[30];
-char nombreC[30];
-char correoV[30];
-char correoC[30];
+char nombreV[35];
+char nombreC[35];
+char correoV[35];
+char correoC[35];
 char telV[15];
 char telC[15];
 int idVendedor;
 int idCliente;
+int dia;
+int mes;
+int anio;
+
 public:
-Cabecera(int id=0,const char* nV="XXX", const char* nC="XXX", const char* cV="XXX", const char* cC="XXX", const char* tV="111", const char* tC="111", int iV=0, int iC=0){
+Cabecera(int id=0,const char* nV="XXX", const char* nC="XXX", const char* cV="XXX", const char* cC="XXX", const char* tV="111", const char* tC="111", int iV=0, int iC=0, int d=0, int m=0, int a=0){
 this->idVenta=id;
 strcpy(this->nombreV, nV);
 strcpy(this->nombreC, nC);
@@ -26,6 +30,9 @@ strcpy(this->telV, tV);
 strcpy(this->telC, tC);
 this->idVendedor=iV;
 this->idCliente=iC;
+this->dia=d;
+this->mes=m;
+this->anio=a;
 }
 void setIdVenta(int id){
 idVenta=id;
@@ -67,6 +74,18 @@ void setIdCliente(int iC){
 idCliente=iC;
 }
 
+void setDia(int d){
+dia=d;
+}
+
+void setMes(int m){
+mes=m;
+}
+
+void setAnio(int a){
+anio=a;
+}
+
 const char* getNombreV(){
 return nombreV;
 }
@@ -98,6 +117,19 @@ return idVendedor;
 int getIdCliente(){
 return idCliente;
 }
+
+int getDia(){
+return dia;
+}
+
+int getMes(){
+return mes;
+}
+
+int getAnio(){
+return anio;
+}
+
 };
 
 
