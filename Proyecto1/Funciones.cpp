@@ -349,8 +349,9 @@ case 2:
 
 case 3:
     system("cls");
-    objC.listarCabeceras();
-    objD.listarDetalle();
+    listarFacturas();
+    //objC.listarCabeceras();
+    //objD.listarDetalle();
     break;
 
 case 0:
@@ -363,7 +364,7 @@ case 0:
 
 }
 
-/*void listarFacturas(){
+void listarFacturas(){
 FILE *cabecera, *detalle;
 cabecera=fopen("Cabecera.dat", "rb");
 if(cabecera==NULL){
@@ -379,15 +380,15 @@ ArchivoCabecera obj;
 ArchivoDetalle obj1;
 Cabecera obj2;
 DetalleVenta obj3;
-/*int idD, idC;
+int idD, idC;
 while(fread(&obj2,sizeof(Cabecera),1,cabecera)!=0){
 idC=obj2.getIdVenta();
 }
 while(fread(&obj3,sizeof(DetalleVenta),1,detalle)!=0){
 idD=obj3.getIdDetalle();
 }
-*///if(idC==idD){
-//obj.listarCabeceras();
-//obj1.listarDetalle();
-//}
-
+if(idC==obj2.getIdVenta()&&idD==obj3.getIdDetalle()){
+obj.listarCabeceras();
+obj1.listarDetalle();
+}
+}
