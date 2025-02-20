@@ -35,10 +35,12 @@
 		<Unit filename="ArchivoAutos.h" />
 		<Unit filename="ArchivoCabecera.h" />
 		<Unit filename="ArchivoCliente.h" />
+		<Unit filename="ArchivoDetalle.h" />
 		<Unit filename="ArchivoVendedor.h" />
 		<Unit filename="ClassAuto.h" />
 		<Unit filename="ClassCabecera.h" />
 		<Unit filename="ClassCliente.h" />
+		<Unit filename="ClassDetalle.h" />
 		<Unit filename="ClassVendedor.h" />
 		<Unit filename="DeclaracionDeFunciones.h" />
 		<Unit filename="Funciones.cpp" />
