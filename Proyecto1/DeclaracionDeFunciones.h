@@ -10,4 +10,5 @@ void menuAutos();
 void menuModificarAuto();
 void menuVentas();
 void listarFacturas();
+void buscarFactura();
 #endif // DECLARACIONDEFUNCIONES_H_INCLUDED
