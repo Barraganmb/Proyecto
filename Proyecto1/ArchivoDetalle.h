@@ -53,12 +53,15 @@ obj.setPrecio(precio);
 }
 }
 idD=obj2.idDetalle();
-obj.setIdAuto(idD);
-
+cout<<"EL DETALLE DE LA VENTA ES: "<<idD<<endl;
+obj.setIdDetalle(idD);
+obj.setIdAuto(idA);
+system("pause");
 fwrite(&obj,sizeof(DetalleVenta),1,detalle);
 fclose(detalle);
 fclose(vehiculo);
 }
+
 
 int ArchivoDetalle::idDetalle(){
 FILE* idDetalle;
@@ -84,7 +87,7 @@ cout<<"No se ha logrado abrir este archivo"<<endl;
 return;
 }
 DetalleVenta obj;
-cout<<"Detalle de la venta"<<endl;
+cout<<"Detalle de la venta "<<endl;
 while(fread(&obj,sizeof(DetalleVenta),1,listar)!=0){
 cout<<"Datos del vehiculo"<<endl;
 cout<<"Id: "<<obj.getIdAuto()<<endl;

@@ -8,6 +8,7 @@ public:
 void cabeceraVenta();
 int idVenta();
 void listarCabeceras();
+void buscarCabecera(int id);
 };
 
 
@@ -34,13 +35,14 @@ ArchivoCabecera obj1;
 Cabecera obj;
 Cliente objC;
 Vendedor objV;
-int id,idC,d,m,a;
+int id,idC,d,m,a, contador=0;
 char telc[15];
 char telV[15];
 char nomV[30];
 char nomC[30];
 char correoV[30];
 char correoC[30];
+
 cout<<"Cabecera de la venta"<<endl;
 cout<<"Ingrese la fecha"<<endl;
 cout<<"Dia: ";
@@ -87,7 +89,8 @@ obj.setDia(d);
 obj.setMes(m);
 obj.setAnio(a);
 fwrite(&obj,sizeof(Cabecera),1,cabeceraV);
-
+contador+=1;
+obj.setContador(contador);
 fclose(cabeceraV);
 fclose(cliente);
 fclose(vendedor);
@@ -137,5 +140,37 @@ cout<<"Correo: "<<obj.getCorreoC()<<endl;
 cout<<"Telefono: "<<obj.getTelC()<<endl;
 }
 fclose(listar);
+}
+
+void ArchivoCabecera::buscarCabecera(int id){
+FILE* cabecera;
+cabecera=fopen("Cabecera.dat","rb");
+if(cabecera==NULL){
+cout<<"No se ha logrado abrir este archivo"<<endl;
+return;
+}
+Cabecera obj;
+while(fread(&obj,sizeof(Cabecera),1,cabecera)!=0){
+if(obj.getIdVenta()==id){
+cout<<"Fecha: "<<obj.getDia()<<"/"<<obj.getMes()<<"/"<<obj.getAnio()<<endl;
+cout<<endl;
+cout<<"Datos del vendedor"<<endl;
+cout<<endl;
+cout<<"Id: "<<obj.getIdVendedor()<<endl;
+cout<<"Nombre: "<<obj.getNombreV()<<endl;
+cout<<"Correo: "<<obj.getCorreoV()<<endl;
+cout<<"Telefono: "<<obj.getTelV()<<endl;
+cout<<endl;
+cout<<"Datos del cliente"<<endl;
+cout<<endl;
+cout<<"Id: "<<obj.getIdCliente()<<endl;
+cout<<"Nombre: "<<obj.getNombreC()<<endl;
+cout<<"Correo: "<<obj.getCorreoC()<<endl;
+cout<<"Telefono: "<<obj.getTelC()<<endl;
+}
+}
+fclose(cabecera);
+system("pause");
+system("cls");
 }
 #endif // ARCHIVOCABECERA_H_INCLUDED

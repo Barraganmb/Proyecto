@@ -18,9 +18,10 @@ int idCliente;
 int dia;
 int mes;
 int anio;
+int contador;
 
 public:
-Cabecera(int id=0,const char* nV="XXX", const char* nC="XXX", const char* cV="XXX", const char* cC="XXX", const char* tV="111", const char* tC="111", int iV=0, int iC=0, int d=0, int m=0, int a=0){
+Cabecera(int id=0,const char* nV="XXX", const char* nC="XXX", const char* cV="XXX", const char* cC="XXX", const char* tV="111", const char* tC="111", int iV=0, int iC=0, int d=0, int m=0, int a=0, int c=0){
 this->idVenta=id;
 strcpy(this->nombreV, nV);
 strcpy(this->nombreC, nC);
@@ -33,6 +34,7 @@ this->idCliente=iC;
 this->dia=d;
 this->mes=m;
 this->anio=a;
+this->contador=c;
 }
 void setIdVenta(int id){
 idVenta=id;
@@ -86,6 +88,10 @@ void setAnio(int a){
 anio=a;
 }
 
+void setContador(int c){
+contador=c;
+}
+
 const char* getNombreV(){
 return nombreV;
 }
@@ -128,6 +134,10 @@ return mes;
 
 int getAnio(){
 return anio;
+}
+
+int getContador(){
+return contador;
 }
 
 };

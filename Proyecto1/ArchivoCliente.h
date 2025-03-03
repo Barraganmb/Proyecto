@@ -21,7 +21,7 @@ void modificarCorreoCliente();
 
 void ArchivoCliente::darAltaCliente(){
 FILE *altaCliente;
-altaCliente=fopen("cliente.dat","ab+");
+altaCliente=fopen("cliente.dat","ab");
 if(altaCliente==NULL){
 cout<<"No se logro crea un nuevo archivo"<<endl;
 return;

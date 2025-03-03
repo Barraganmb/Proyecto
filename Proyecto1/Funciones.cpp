@@ -6,6 +6,7 @@
 #include "ArchivoAutos.h"
 #include "ArchivoCabecera.h"
 #include "ArchivoDetalle.h"
+#include <vector>
 using namespace std;
 
 
@@ -345,11 +346,12 @@ case 1:
 
 case 2:
     system("cls");
+    objC.buscarCabecera(1);
     break;
 
 case 3:
     system("cls");
-    listarFacturas();
+//    listarFacturas();
     //objC.listarCabeceras();
     //objD.listarDetalle();
     break;
@@ -364,7 +366,46 @@ case 0:
 
 }
 
-void listarFacturas(){
+
+void buscarFactura(){
+FILE *cabecera, *detalle;
+cabecera=fopen("Cabecera.dat", "rb");
+if(cabecera==NULL){
+cout<<"No se ha logrado abrir este archivo"<<endl;
+return;
+}
+
+detalle=fopen("Detalle.dat", "rb");
+if(detalle==NULL){
+cout<<"No se ha logrado abrir este archivo"<<endl;
+return;
+}
+ArchivoCabecera obj;
+ArchivoDetalle obj1;
+Cabecera obj2;
+DetalleVenta obj3;
+int idV;
+
+cout<<"Ingrese el id de venta de la factura que quiere encontrar: ";
+cin>>idV;
+while(fread(&obj2,sizeof(Cabecera),1,cabecera)!=0){
+if(obj2.getIdVenta()==idV){
+cout<<"Cabecera"<<endl;
+obj.listarCabeceras();
+}
+}
+while(fread(&obj3,sizeof(DetalleVenta),1,detalle)!=0){
+if(obj3.getIdDetalle()==idV){
+cout<<"Detalle"<<endl;
+obj1.listarDetalle();
+}
+}
+system("pause");
+system("cls");
+}
+
+
+/*void listarFacturas(){
 FILE *cabecera, *detalle;
 cabecera=fopen("Cabecera.dat", "rb");
 if(cabecera==NULL){
@@ -380,15 +421,30 @@ ArchivoCabecera obj;
 ArchivoDetalle obj1;
 Cabecera obj2;
 DetalleVenta obj3;
-int idD, idC;
+ vector<int> idC, idD;
+
 while(fread(&obj2,sizeof(Cabecera),1,cabecera)!=0){
-idC=obj2.getIdVenta();
+idC.push_back(obj2.getIdVenta());
+//idC=obj2.getIdVenta();
 }
 while(fread(&obj3,sizeof(DetalleVenta),1,detalle)!=0){
-idD=obj3.getIdDetalle();
+idD.push_back(obj3.getIdDetalle());
+//idD=obj3.getIdDetalle();
 }
-if(idC==obj2.getIdVenta()&&idD==obj3.getIdDetalle()){
+fclose(cabecera);
+fclose(detalle);
+for (size_t i = 0; i < idC.size(); i++) {
+for (size_t j = 0; j < idD.size(); j++) {
+if (idC[i] == idD[j]) {
+cout<<"VENTA N°: "<<idC[i]<<endl;
+cout<<"CABECERA:"<<endl;
 obj.listarCabeceras();
+cout<<"Detalle"<<endl;
 obj1.listarDetalle();
 }
 }
+system("pause");
+}
+}
+
+*/
