@@ -346,7 +346,8 @@ case 1:
 
 case 2:
     system("cls");
-    objC.buscarCabecera(1);
+    buscarFactura();
+    //objC.buscarCabecera(1);
     break;
 
 case 3:
@@ -366,42 +367,16 @@ case 0:
 
 }
 
-
 void buscarFactura(){
-FILE *cabecera, *detalle;
-cabecera=fopen("Cabecera.dat", "rb");
-if(cabecera==NULL){
-cout<<"No se ha logrado abrir este archivo"<<endl;
-return;
-}
-
-detalle=fopen("Detalle.dat", "rb");
-if(detalle==NULL){
-cout<<"No se ha logrado abrir este archivo"<<endl;
-return;
-}
 ArchivoCabecera obj;
 ArchivoDetalle obj1;
-Cabecera obj2;
-DetalleVenta obj3;
-int idV;
+int id;
+cout<<"Ingrese el id de la factura que quiere buscar: ";
+cin>>id;
+obj.buscarCabecera(id);
+obj1.buscarDetalle(id);
 
-cout<<"Ingrese el id de venta de la factura que quiere encontrar: ";
-cin>>idV;
-while(fread(&obj2,sizeof(Cabecera),1,cabecera)!=0){
-if(obj2.getIdVenta()==idV){
-cout<<"Cabecera"<<endl;
-obj.listarCabeceras();
-}
-}
-while(fread(&obj3,sizeof(DetalleVenta),1,detalle)!=0){
-if(obj3.getIdDetalle()==idV){
-cout<<"Detalle"<<endl;
-obj1.listarDetalle();
-}
-}
-system("pause");
-system("cls");
+
 }
 
 
