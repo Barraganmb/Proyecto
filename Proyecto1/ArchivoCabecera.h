@@ -170,7 +170,6 @@ cout<<"Telefono: "<<obj.getTelC()<<endl;
 }
 }
 fclose(cabecera);
-system("pause");
-system("cls");
+
 }
 #endif // ARCHIVOCABECERA_H_INCLUDED

@@ -7,6 +7,7 @@ public:
 void detalle();
 int idDetalle();
 void listarDetalle();
+void buscarDetalle(int id);
 };
 
 void ArchivoDetalle::detalle(){
@@ -97,6 +98,30 @@ cout<<"Modelo: "<<obj.getModelo()<<endl;
 cout<<"Precio: "<<obj.getPrecio()<<endl;
 }
 fclose(listar);
+}
+
+void ArchivoDetalle::buscarDetalle(int id){
+FILE *detalle;
+detalle=fopen("Detalle.dat","rb");
+if(detalle==NULL){
+cout<<"No se ha logrado abrir este archivo"<<endl;
+return;
+}
+DetalleVenta obj;
+
+while(fread(&obj,sizeof(DetalleVenta),1,detalle)!=0){
+if(obj.getIdDetalle()==id){
+cout<<"Datos del vehiculo"<<endl;
+cout<<"Id: "<<obj.getIdAuto()<<endl;
+cout<<"Nombre: "<<obj.getNombre()<<endl;
+cout<<"Marca: "<<obj.getMarca()<<endl;
+cout<<"Modelo: "<<obj.getModelo()<<endl;
+cout<<"Precio: "<<obj.getPrecio()<<endl;
+}
+}
+fclose(detalle);
+system("pause");
+system("cls");
 }
 
 #endif // ARCHIVODETALLE_H_INCLUDED
