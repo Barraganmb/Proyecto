@@ -57,6 +57,8 @@ obj.setId(id);
 
 fwrite(&obj,sizeof(Auto),1,altaAuto);
 fclose(altaAuto);
+system("pause");
+system("cls");
 }
 
 
@@ -126,6 +128,8 @@ if(!encontrado){
 cout<<"No se encontro el id ingresado"<<endl;
 return;
 }
+system("pause");
+system("cls");
 fclose(buscarAuto);
 }
 
