@@ -347,14 +347,11 @@ case 1:
 case 2:
     system("cls");
     buscarFactura();
-    //objC.buscarCabecera(1);
     break;
 
 case 3:
     system("cls");
-//    listarFacturas();
-    //objC.listarCabeceras();
-    //objD.listarDetalle();
+    listarFacturas();
     break;
 
 case 0:
@@ -376,50 +373,61 @@ cin>>id;
 obj.buscarCabecera(id);
 obj1.buscarDetalle(id);
 
-
 }
 
-
-/*void listarFacturas(){
+void listarFacturas() {
 FILE *cabecera, *detalle;
-cabecera=fopen("Cabecera.dat", "rb");
-if(cabecera==NULL){
-cout<<"No se ha logrado abrir este archivo"<<endl;
-return;
-}
-detalle=fopen("Detalle.dat", "rb");
-if(detalle==NULL){
-cout<<"No se ha logrado abrir este archivo"<<endl;
-return;
-}
-ArchivoCabecera obj;
-ArchivoDetalle obj1;
-Cabecera obj2;
-DetalleVenta obj3;
- vector<int> idC, idD;
+cabecera = fopen("Cabecera.dat", "rb+");
+if (cabecera == NULL) {
+cout << "No ha sido posible abrir el archivo Cabecera.dat" << endl;
+return;}
 
-while(fread(&obj2,sizeof(Cabecera),1,cabecera)!=0){
-idC.push_back(obj2.getIdVenta());
-//idC=obj2.getIdVenta();
+detalle = fopen("Detalle.dat", "rb");
+if (detalle == NULL) {
+cout << "No ha sido posible abrir el archivo Detalle.dat" << endl;
+return;}
+Cabecera obj;
+DetalleVenta obj1;
+int contador = 0;
+while (fread(&obj, sizeof(Cabecera), 1, cabecera) != 0) {
+contador++;
 }
-while(fread(&obj3,sizeof(DetalleVenta),1,detalle)!=0){
-idD.push_back(obj3.getIdDetalle());
-//idD=obj3.getIdDetalle();
+fseek(cabecera, 0, SEEK_SET);
+for (int i = 0; i < contador; i++) {
+fread(&obj, sizeof(Cabecera), 1, cabecera);
+fseek(detalle, 0, SEEK_SET);
+while (fread(&obj1, sizeof(DetalleVenta), 1, detalle) != 0) {
+if (obj.getIdVenta() == obj1.getIdDetalle()) {
+cout << endl;
+cout << "Cabecera" << endl;
+cout << "Fecha: " << obj.getDia() << "/" << obj.getMes() << "/" << obj.getAnio() << endl;
+cout << "Id de la venta: " << obj.getIdVenta() << endl;
+cout << "Datos del vendedor" << endl;
+cout << "Id: " << obj.getIdVendedor() << endl;
+cout << "Nombre: " << obj.getNombreV() << endl;
+cout << "Correo: " << obj.getCorreoV() << endl;
+cout << "Telefono: " << obj.getTelV() << endl;
+cout << endl;
+cout << "Datos del cliente" << endl;
+cout << "Id: " << obj.getIdCliente() << endl;
+cout << "Nombre: " << obj.getNombreC() << endl;
+cout << "Correo: " << obj.getCorreoC() << endl;
+cout << "Telefono: " << obj.getTelC() << endl;
+cout << endl;
+cout << "Detalle" << endl;
+cout << "Datos del vehiculo" << endl;
+cout << "Id: " << obj1.getIdAuto() << endl;
+cout << "Nombre: " << obj1.getNombre() << endl;
+cout << "Marca: " << obj1.getMarca() << endl;
+cout << "Modelo: " << obj1.getModelo() << endl;
+cout << "Precio: " << obj1.getPrecio() << endl;
 }
-fclose(cabecera);
-fclose(detalle);
-for (size_t i = 0; i < idC.size(); i++) {
-for (size_t j = 0; j < idD.size(); j++) {
-if (idC[i] == idD[j]) {
-cout<<"VENTA N°: "<<idC[i]<<endl;
-cout<<"CABECERA:"<<endl;
-obj.listarCabeceras();
-cout<<"Detalle"<<endl;
-obj1.listarDetalle();
 }
 }
 system("pause");
-}
+system("cls");
+fclose(cabecera);
+fclose(detalle);
 }
 
-*/
+
