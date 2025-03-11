@@ -69,7 +69,8 @@ cout<<"Su id asignado es: "<<id<<endl;
 obj.setId(id);
 fwrite(&obj,sizeof(Vendedor),1,alta);
 fclose(alta);
-
+system("pause");
+system("cls");
 }
 
 void ArchivoVendedor::listarVendedores(){
@@ -125,7 +126,8 @@ fclose(iniciar);
 if(!encontrado){
 cout<<"No se encontraron los datos"<<endl;
 }
-
+system("pause");
+system("cls");
 }
 
 
@@ -172,6 +174,8 @@ cout<<"El id ingresado no ha sido encontrado"<<endl;
 return;
 }
 fclose(buscarV);
+system("pause");
+system("cls");
 }
 
 
@@ -206,6 +210,8 @@ if(!encontrado){
 cout<<"No se ha logrado dar de baja el id ingresado"<<endl;
 }
 fclose(baja);
+system("pause");
+system("cls");
 }
 
 void ArchivoVendedor::modificarVendedor(){
@@ -253,6 +259,8 @@ cout<<"Los datos fueron modificados correctamente"<<endl;
 }
 }
 fclose(modificar);
+system("pause");
+system("cls");
 }
 
 void ArchivoVendedor::modificarNombre(){
@@ -287,6 +295,8 @@ return;
 if(!encontrado){
 cout<<"No se ha logrado modificar el nombre"<<endl;
 }
+system("pause");
+system("cls");
 }
 
 void ArchivoVendedor::modificarDni(){
@@ -314,7 +324,6 @@ fseek(dni, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, dni);
 cout<<"Se modifico el dni correctamente"<<endl;
 encontrado=true;
-fclose(dni);
 return;
 }
 }
@@ -322,6 +331,9 @@ if(!encontrado){
 cout<<"No se ha logrado modificar el dni"<<endl;
 return;
 }
+fclose(dni);
+system("pause");
+system("cls");
 }
 
 
@@ -350,7 +362,6 @@ fseek(correo, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, correo);
 cout<<"Se modifico el correo correctamente"<<endl;
 encontrado=true;
-fclose(correo);
 return;
 }
 }
@@ -358,7 +369,9 @@ if(!encontrado){
 cout<<"No se ha logrado modificar el correo"<<endl;
 return;
 }
-
+fclose(correo);
+system("pause");
+system("cls");
 }
 
 
@@ -387,7 +400,6 @@ fseek(telefono, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, telefono);
 cout<<"Se modifico el telefono correctamente"<<endl;
 encontrado=true;
-fclose(telefono);
 return;
 }
 }
@@ -395,6 +407,9 @@ if(!encontrado){
 cout<<"No se ha logrado modificar el telefono"<<endl;
 return;
 }
+fclose(telefono);
+system("pause");
+system("cls");
 }
 
 
@@ -426,7 +441,6 @@ fseek(clave, posicion, SEEK_SET);
 fwrite(&obj, sizeof(Vendedor), 1, clave);
 cout<<"Se modifico la clave correctamente"<<endl;
 encontrado=true;
-fclose(clave);
 return;
 }
 }
@@ -435,6 +449,9 @@ if(!encontrado){
 cout<<"No se ha logrado modificar la clave"<<endl;
 return;
 }
+fclose(clave);
+system("pause");
+system("cls");
 }
 
 void ArchivoVendedor::recuperarClave(){

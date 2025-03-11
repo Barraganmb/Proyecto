@@ -59,6 +59,8 @@ obj.setIdCliente(id);
 
 fwrite(&obj,sizeof(Cliente),1,altaCliente);
 fclose(altaCliente);
+system("pause");
+system("cls");
 }
 
 void ArchivoCliente::listarClientes(){
@@ -125,6 +127,8 @@ cout<<"No se encontro el id ingresado"<<endl;
 return;
 }
 fclose(buscarCliente);
+system("pause");
+system("cls");
 }
 
 void ArchivoCliente::modificarCliente(){
@@ -174,6 +178,8 @@ cout<<"No se ha logrado modificar los datos del cliente"<<endl;
 return;
 }
 }
+system("pause");
+system("cls");
 }
 
 void ArchivoCliente::modificarNombreCliente(){
@@ -209,6 +215,8 @@ if(!encontrado){
 cout<<"No se ha logrado modificar el nombre"<<endl;
 return;
 }
+system("pause");
+system("cls");
 }
 
 void ArchivoCliente::modificarDNICliente(){
@@ -244,6 +252,8 @@ if(!encontrado){
 cout<<"No se ha logrado modificar el dni"<<endl;
 return;
 }
+system("pause");
+system("cls");
 }
 
 void ArchivoCliente::modificarCorreoCliente(){
@@ -279,6 +289,8 @@ if(!encontrado){
 cout<<"No se ha logrado modificar el correo"<<endl;
 return;
 }
+system("pause");
+system("cls");
 }
 
 void ArchivoCliente::modificarTelefonoCliente(){
@@ -314,6 +326,8 @@ if(!encontrado){
 cout<<"No se ha logrado modificar el telefono"<<endl;
 return;
 }
+system("pause");
+system("cls");
 }
 
 #endif // ARCHIVOCLIENTE_H_INCLUDED
