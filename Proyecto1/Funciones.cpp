@@ -6,6 +6,7 @@
 #include "ArchivoAutos.h"
 #include "ArchivoCabecera.h"
 #include "ArchivoDetalle.h"
+#include "rlutil.h"
 //#include <vector>
 using namespace std;
 
@@ -18,7 +19,7 @@ ArchivoCliente obj1;
 ArchivoCabecera o;
 ArchivoDetalle ob;
 while(true){
-//rlutil::setColor(rlutil::RED);
+rlutil::setColor(rlutil::RED);
 cout<<"1)Iniciar secion"<<endl;
 cout<<"2)Olvide mi clave"<<endl;
 cout<<"3)Dar alta a un vendedor"<<endl;

@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1741724857 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\main.cpp
+1741800421 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\main.cpp
 	<iostream>
 	"DeclaracionDeFunciones.h"
+	"rlutil.h"
 
 1734915878 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classvendedor.h
 	<iostream>
@@ -52,4 +53,18 @@
 	"ArchivoAutos.h"
 
 1738451330 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classdetalle.h
+
+1741800349 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
 
