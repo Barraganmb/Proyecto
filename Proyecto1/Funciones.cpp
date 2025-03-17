@@ -12,18 +12,24 @@ using namespace std;
 
 
 //MENUS
+/*
 void menu(){
+rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK);
 int opcion;
 ArchivoVendedor obj;
 ArchivoCliente obj1;
 ArchivoCabecera o;
 ArchivoDetalle ob;
 while(true){
-rlutil::setColor(rlutil::RED);
-cout<<"1)Iniciar secion"<<endl;
-cout<<"2)Olvide mi clave"<<endl;
+rlutil::locate(1,1);
+cout<<"1)Iniciar secion        "<<endl;
+rlutil::locate(1,3);
+cout<<"2)Olvide mi clave       "<<endl;
+rlutil::locate(1,5);
 cout<<"3)Dar alta a un vendedor"<<endl;
-cout<<"0)Salir"<<endl;
+rlutil::locate(1,7);
+cout<<"0)Salir                 "<<endl;
 cin>>opcion;
 
 switch(opcion){
@@ -51,18 +57,85 @@ case 0:
 }
 }
 }
+*/
+
+
+void menu() {
+rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK);
+ArchivoVendedor obj;
+int opcion = 1;
+const int MAX_OPCIONES = 4;
+while (true){
+rlutil::cls();
+for (int i = 1; i <= MAX_OPCIONES; i++) {
+rlutil::locate(5, i * 2);
+if (opcion == i) {
+rlutil::setBackgroundColor(rlutil::GREEN);
+rlutil::setColor(rlutil::BLACK);
+}
+else{ rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK); }
+switch(i){
+case 1: std::cout << "  1) Iniciar sesion        "; break;
+case 2: std::cout << "  2) Olvide mi clave       "; break;
+case 3: std::cout << "  3) Dar alta a vendedor   "; break;
+case 4: std::cout << "  0) Salir                 "; break;
+}
+}
+rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK);
+int tecla = rlutil::getkey();
+if (tecla == rlutil::KEY_UP && opcion > 1) {
+opcion--;}
+if (tecla == rlutil::KEY_DOWN && opcion < MAX_OPCIONES){
+opcion++;
+}
+if (tecla == rlutil::KEY_ENTER) {
+system("cls");
+
+switch (opcion){
+case 1:
+obj.iniciarSecion();
+system("cls");
+menuVendedores();
+  break;
+
+case 2:
+obj.recuperarClave();
+  break;
+
+case 3:
+obj.darAlta();
+  break;
+
+case 4:
+  return;
+    }
+  }
+ }
+}
+
+
 
 
 void menuVendedores(){
 int opcion;
 ArchivoVendedor obj;
 while(true){
+rlutil::locate(1,1);
 cout<<"1)Listar vendedores"<<endl;
+rlutil::locate(1,3);
 cout<<"2)Buscar vendedor "<<endl;
+rlutil::locate(1,5);
 cout<<"3)Modificar Datos"<<endl;
+rlutil::locate(1,7);
 cout<<"4)Clientes"<<endl;
+rlutil::locate(1,9);
 cout<<"5)Vehiculos"<<endl;
+rlutil::locate(1,11);
 cout<<"6)Ventas"<<endl;
+rlutil::locate(1,13);
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -109,11 +182,17 @@ void menuModificar(){
 int opcion;
 ArchivoVendedor obj;
 while(true){
+rlutil::locate(1,1);
 cout<<"1)Modificar todos los datos"<<endl;
+rlutil::locate(1,3);
 cout<<"2)Modificar nombre"<<endl;
+rlutil::locate(1,5);
 cout<<"3)Modificar dni"<<endl;
+rlutil::locate(1,7);
 cout<<"4)Modificar correo"<<endl;
+rlutil::locate(1,9);
 cout<<"5)Modificar telefono"<<endl;
+rlutil::locate(1,11);
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -155,10 +234,15 @@ void menuCliente(){
 ArchivoCliente obj;
 int opcion;
 while(true){
+rlutil::locate(1,1);
 cout<<"1)Dar alta cliente"<<endl;
+rlutil::locate(1,3);
 cout<<"2)Listar clientes"<<endl;
+rlutil::locate(1,5);
 cout<<"3)Buscar cliente"<<endl;
+rlutil::locate(1,7);
 cout<<"4)Modificar clientes"<<endl;
+rlutil::locate(1,9);
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -195,11 +279,17 @@ void menuModificarCliente(){
 int opcion;
 ArchivoCliente obj;
 while(true){
+rlutil::locate(1,1);
 cout<<"1)Modificar todos los datos"<<endl;
+rlutil::locate(1,3);
 cout<<"2)Modificar nombre"<<endl;
+rlutil::locate(1,5);
 cout<<"3)Modificar dni"<<endl;
+rlutil::locate(1,7);
 cout<<"4)Modificar correo"<<endl;
+rlutil::locate(1,9);
 cout<<"5)Modificar telefono"<<endl;
+rlutil::locate(1,11);
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -241,11 +331,17 @@ void menuAutos(){
 int opcion;
 ArchivoAuto obj;
 while(true){
+rlutil::locate(1,1);
 cout<<"1)Dar de alta vehiculo"<<endl;
+rlutil::locate(1,3);
 cout<<"2)Buscar vehiculo"<<endl;
+rlutil::locate(1,5);
 cout<<"3)Listar vehiculo"<<endl;
+rlutil::locate(1,7);
 cout<<"4)Dar de baja vehiculo"<<endl;
+rlutil::locate(1,9);
 cout<<"5)Modificar vehiculo"<<endl;
+rlutil::locate(1,11);
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -288,11 +384,17 @@ void menuModificarAuto(){
 int opcion;
 ArchivoAuto obj;
 while(true){
+rlutil::locate(1,1);
 cout<<"1)Modificar todos los datos"<<endl;
+rlutil::locate(1,3);
 cout<<"2)Modificar nombre"<<endl;
+rlutil::locate(1,5);
 cout<<"3)Modificar marca"<<endl;
+rlutil::locate(1,7);
 cout<<"4)Modificar modelo"<<endl;
+rlutil::locate(1,9);
 cout<<"5)Modificar precio"<<endl;
+rlutil::locate(1,11);
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
@@ -333,9 +435,13 @@ int opcion;
 ArchivoCabecera objC;
 ArchivoDetalle objD;
 while(true){
+rlutil::locate(1,1);
 cout<<"1)Realizar una venta"<<endl;
+rlutil::locate(1,3);
 cout<<"2)Buscar una factura"<<endl;
+rlutil::locate(1,5);
 cout<<"3)Listar facturas"<<endl;
+rlutil::locate(1,7);
 cout<<"0)Salir"<<endl;
 cin>>opcion;
 switch(opcion){
