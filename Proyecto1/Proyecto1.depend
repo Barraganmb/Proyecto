@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1741800421 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\main.cpp
+1742336499 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\main.cpp
 	<iostream>
 	"DeclaracionDeFunciones.h"
 	"rlutil.h"
 
-1734915878 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classvendedor.h
+1742294312 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\classvendedor.h
 	<iostream>
 	<cstring>
 
-1742249399 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivovendedor.h
+1742419298 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\archivovendedor.h
 	"ClassVendedor.h"
 	<cstdio>
 	<cstring>
@@ -23,9 +23,9 @@
 	<iostream>
 	<cstring>
 
-1740158872 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\declaraciondefunciones.h
+1742331610 c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\declaraciondefunciones.h
 
-1742250053 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
+1742390163 source:c:\users\estudiante\onedrive\escritorio\proyecto1melany\proyecto1\funciones.cpp
 	<iostream>
 	"ClassVendedor.h"
 	"ArchivoVendedor.h"
