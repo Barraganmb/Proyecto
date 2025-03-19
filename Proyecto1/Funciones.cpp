@@ -63,8 +63,10 @@ case 0:
 void menu() {
 rlutil::setBackgroundColor(rlutil::WHITE);
 rlutil::setColor(rlutil::BLACK);
+
 ArchivoVendedor obj;
 int opcion = 1;
+
 const int MAX_OPCIONES = 4;
 while (true){
 rlutil::cls();
@@ -74,23 +76,28 @@ if (opcion == i) {
 rlutil::setBackgroundColor(rlutil::GREEN);
 rlutil::setColor(rlutil::BLACK);
 }
+
 else{ rlutil::setBackgroundColor(rlutil::WHITE);
 rlutil::setColor(rlutil::BLACK); }
+
 switch(i){
-case 1: std::cout << "  1) Iniciar sesion        "; break;
-case 2: std::cout << "  2) Olvide mi clave       "; break;
-case 3: std::cout << "  3) Dar alta a vendedor   "; break;
-case 4: std::cout << "  0) Salir                 "; break;
+case 1: std::cout << "Iniciar sesion        "; break;
+case 2: std::cout << "Olvide mi clave       "; break;
+case 3: std::cout << "Dar alta a vendedor   "; break;
+case 4: std::cout << "Salir                 "; break;
 }
 }
 rlutil::setBackgroundColor(rlutil::WHITE);
 rlutil::setColor(rlutil::BLACK);
 int tecla = rlutil::getkey();
+
 if (tecla == rlutil::KEY_UP && opcion > 1) {
 opcion--;}
+
 if (tecla == rlutil::KEY_DOWN && opcion < MAX_OPCIONES){
 opcion++;
 }
+
 if (tecla == rlutil::KEY_ENTER) {
 system("cls");
 
@@ -110,7 +117,7 @@ obj.darAlta();
   break;
 
 case 4:
-  return;
+  return ;
     }
   }
  }
@@ -119,6 +126,77 @@ case 4:
 
 
 
+
+void menuVendedores() {
+rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK);
+
+ArchivoVendedor obj;
+int opcion = 1;
+
+const int MAX_OPCIONES = 5;
+while (true){
+rlutil::cls();
+for (int i = 1; i <= MAX_OPCIONES; i++) {
+rlutil::locate(5, i * 2);
+if (opcion == i) {
+rlutil::setBackgroundColor(rlutil::GREEN);
+rlutil::setColor(rlutil::BLACK);
+}
+
+else{ rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK); }
+
+switch(i){
+case 1: std::cout << " Vendedores            "; break;
+case 2: std::cout << " Clientes              "; break;
+case 3: std::cout << " Vehiculos             "; break;
+case 4: std::cout << " Ventas                "; break;
+case 5: std::cout << " Salir                 "; break;
+}
+}
+rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK);
+int tecla = rlutil::getkey();
+if (tecla == rlutil::KEY_UP && opcion > 1) {
+opcion--;}
+
+if (tecla == rlutil::KEY_DOWN && opcion < MAX_OPCIONES){
+opcion++;
+}
+if (tecla == rlutil::KEY_ENTER) {
+system("cls");
+
+switch (opcion){
+case 1:
+system("cls");
+menuVendedoresII();
+  break;
+
+case 2:
+    system("cls");
+    menuCliente();
+    break;
+
+case 3:
+    system("cls");
+    menuAutos();
+    break;
+
+case 4:
+    system("cls");
+    menuVentas();
+    break;
+case 5:
+    menu();
+    return;
+    break;
+    }
+  }
+ }
+}
+
+/*
 void menuVendedores(){
 int opcion;
 ArchivoVendedor obj;
@@ -176,7 +254,119 @@ case 0:
 }
 }
 }
+*/
 
+
+void menuVendedoresII() {
+rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK);
+
+ArchivoVendedor obj;
+int opcion = 1;
+
+const int MAX_OPCIONES = 5;
+while (true){
+rlutil::cls();
+for (int i = 1; i <= MAX_OPCIONES; i++) {
+rlutil::locate(5, i * 2);
+if (opcion == i) {
+rlutil::setBackgroundColor(rlutil::GREEN);
+rlutil::setColor(rlutil::BLACK);
+}
+
+else{ rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK); }
+
+switch(i){
+case 1: std::cout << " Listar vendedores           "; break;
+case 2: std::cout << " Buscar vendedore            "; break;
+case 3: std::cout << " Modificar datos             "; break;
+case 4: std::cout << " Dar de baja                 "; break;
+case 5: std::cout << " Salir                       "; break;
+}
+}
+rlutil::setBackgroundColor(rlutil::WHITE);
+rlutil::setColor(rlutil::BLACK);
+int tecla = rlutil::getkey();
+if (tecla == rlutil::KEY_UP && opcion > 1) {
+opcion--;}
+
+if (tecla == rlutil::KEY_DOWN && opcion < MAX_OPCIONES){
+opcion++;
+}
+if (tecla == rlutil::KEY_ENTER) {
+system("cls");
+
+switch (opcion){
+case 1:
+system("cls");
+obj.listarVendedores();
+  break;
+
+case 2:
+    system("cls");
+    obj.buscarVendedor();
+    break;
+
+case 3:
+    system("cls");
+    menuModificar();
+    break;
+
+case 4:
+    system("cls");
+    obj.darBaja();
+    break;
+case 5:
+    menuVendedores();
+    return ;
+    break;
+    }
+  }
+ }
+}
+
+
+/*void menuVendedorII(){
+int opcion=1;
+ArchivoVendedor obj;
+while(true){
+cout<<"Listar vendedores"<<endl;
+cout<<"Buscar vendedor"<<endl;
+cout<<"Modificar datos"<<endl;
+cout<<"Dar de baja vendedor"<<endl;
+cout<<"Salir"<<endl;
+cin>>opcion;
+}
+switch(opcion){
+case 1:
+    system("cls");
+    obj.listarVendedores();
+    break;
+
+case 2:
+    system("cls");
+    obj.buscarVendedor();
+    break;
+
+case 3:
+    system("cls");
+    menuModificar();
+    break;
+
+case 4:
+    system("cls");
+    obj.darBaja();
+    break;
+
+case 5:
+    system("cls");
+    return;
+    break;
+}
+}
+
+*/
 
 void menuModificar(){
 int opcion;

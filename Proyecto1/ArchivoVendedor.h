@@ -43,26 +43,28 @@ rlutil::locate(1,1);
 cout<<"DATOS"<<endl;
 rlutil::locate(1,3);
 cout<<"Nombre completo: ";
-cin.ignore();
+//cin.ignore();
 cin.getline(nombre,35,'\n');
 obj.setNombre(nombre);
 rlutil::locate(1,5);
 cout<<"D.N.I: ";
 cin>>dni;
+//cin.ignore();
 obj.setDni(dni);
 rlutil::locate(1,7);
 cout<<"Telefono: ";
-cin.ignore();
-cin.getline(telefono,15,'\n');
+//cin.ignore();
+cin>>telefono;
+//cin.getline(telefono,15,'\n');
 obj.setTelefono(telefono);
 rlutil::locate(1,9);
 cout<<"Correo: ";
-//cin.ignore();
+cin.ignore();
 cin.getline(correo,35,'\n');
 obj.setCorreo(correo);
 rlutil::locate(1,11);
 cout<<"Clave: ";
-cin.ignore();
+//cin.ignore();
 cin.getline(clave,20,'\n');
 obj.setClave(clave);
 obj.setEstado(true);
@@ -80,6 +82,8 @@ fclose(alta);
 system("pause");
 system("cls");
 }
+
+
 
 void ArchivoVendedor::listarVendedores(){
 FILE* listar;
@@ -125,79 +129,41 @@ system("cls");
 }
 
 
-
 void ArchivoVendedor::iniciarSecion(){
-FILE* iniciar;
-iniciar=fopen("vendedor.dat","rb");
+FILE *iniciar;
+iniciar=fopen("vendedor.dat", "rb");
 if(iniciar==NULL){
-cout<<"NO se logro abrir este archivo"<<endl;
+cout<<"No se ha logrado abrir este archivo"<<endl;
 return;
 }
 Vendedor obj;
 char correo[35];
 char clave[20];
 bool encontrado=false;
-int x=40, y=9, alto=7, ancho=40;
- rlutil::locate(x, y);
-    std::cout << (char)201; // Esquina superior izquierda
-    rlutil::locate(x + ancho, y);
-    std::cout << (char)187; // Esquina superior derecha
-    rlutil::locate(x, y + alto);
-    std::cout << (char)200; // Esquina inferior izquierda
-    rlutil::locate(x + ancho, y + alto);
-    std::cout << (char)188; // Esquina inferior derec
-
-
-for (int i = 1; i < ancho; i++) {
-        rlutil::locate(x + i, y);
-        std::cout << (char)205; // Línea superior
-        rlutil::locate(x + i, y + alto);
-        std::cout << (char)205; // Línea inferior
-    }
-
-    // Bordes verticales
-    for (int i = 1; i < alto; i++) {
-        rlutil::locate(x, y + i);
-        std::cout << (char)186; // Línea izquierda
-        rlutil::locate(x + ancho, y + i);
-        std::cout << (char)186; // Línea derecha
-    }
-
-
-
-
-
-rlutil::locate(52,9);
-cout<<"INICIAR SECCION"<<endl;
-rlutil::locate(42,11);
+cout<<"Iniciar secion"<<endl;
 cout<<"Ingrese su correo: ";
-cin.ignore();
 cin.getline(correo,35,'\n');
-rlutil::locate(42,13);
 cout<<"Ingrese su clave: ";
-cin.ignore();
 cin.getline(clave,20,'\n');
 
-while(fread(&obj,sizeof (Vendedor),1,iniciar)!=0){
-if(strcmp(obj.getCorreo(),correo)==0&&strcmp(obj.getClave(),clave)==0){
-rlutil::setColor(rlutil::GREEN);
-rlutil::locate(42,15);
-cout<<"inicio exitoso"<<endl;
-rlutil::setColor(rlutil::BLACK);
+while(fread(&obj,sizeof(Vendedor),1,iniciar)!=0){
+if(strcmp(obj.getCorreo(),correo)==0 &&strcmp(obj.getClave(),clave)==0){
+cout<<"Inicio exitoso"<<endl;
 encontrado=true;
-fclose(iniciar);
+break;
 }
 }
 if(!encontrado){
-rlutil::setColor(rlutil::RED);
-rlutil::locate(42,15);
 cout<<"No se encontraron los datos"<<endl;
-rlutil::setColor(rlutil::BLACK);
-}
-rlutil::locate(42,25);
 system("pause");
-system("cls");
+return;
 }
+fclose(iniciar);
+system("pause");
+
+}
+
+
 
 
 int ArchivoVendedor::idUnico(){
@@ -210,10 +176,12 @@ return 0;
 int idVendedor=0;
 Vendedor obj;
 while(fread(&obj,sizeof(Vendedor),1,idV)!=0){
-idVendedor++;
+if (obj.getId() > idVendedor) {
+            idVendedor = obj.getId();
+        }
 }
-fclose(idV);
 return idVendedor+1;
+fclose(idV);
 }
 
 void ArchivoVendedor::buscarVendedor(){
